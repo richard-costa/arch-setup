@@ -21,9 +21,8 @@ bash "$ROOT/install/system.sh"
 # Enable networking, Bluetooth, TRIM, firewall/timers when installed, and NTP.
 bash "$ROOT/install/services.sh"
 
-# Link portable user configuration, then apply this laptop's monitor layout.
+# Link portable user configuration.
 bash "$ROOT/install/dotfiles.sh"
-bash "$ROOT/install/host.sh" acer-laptop
 
 echo
 echo "Core workstation setup finished."
