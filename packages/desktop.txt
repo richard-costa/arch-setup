@@ -4,7 +4,8 @@ noctalia
 xwayland-satellite
 
 # Portals / desktop integration
-# xdg-desktop-portal-gnome pulls the portal core and GTK backend.
+# xdg-terminal-exec lets GUI apps such as Nautilus launch terminal apps like
+# Micro through the user's preferred terminal.
 xdg-desktop-portal-gnome
 xdg-utils
 xdg-terminal-exec
@@ -44,6 +45,8 @@ gst-plugins-base
 gst-plugins-good
 gst-plugins-bad
 gst-plugins-ugly
+mpv
+socat
 
 # Archives
 file-roller
@@ -73,15 +76,47 @@ wget
 rsync
 openssh
 yazi
+tree
 
-# Everyday applications
-kitty
-firefox
+# Development / databases
+# DBeaver needs a Java runtime; declaring one avoids an interactive provider
+# choice during the bootstrap.
+jre-openjdk
+dbeaver
+docker
+docker-compose
+sqlite
+sqlitebrowser
+# SQLite Browser is Qt5; this provides its native Wayland platform plugin.
+qt5-wayland
+
+# Documents / PDF and ebook tools
+okular
+poppler
+qpdf
+img2pdf
+imagemagick
+mupdf-tools
+ebook-tools
+kdegraphics-mobipocket
+xournalpp
+
+# Creative / study / productivity applications
+krita
+anki
+spotify-launcher
+flatpak
 gnome-text-editor
 apostrophe
 loupe
-mpv
 obsidian
+
+# Browser / PWA support
+firefox
+firefoxpwa
+
+# Terminal
+kitty
 
 # Theming
 # Noctalia's GTK templates use adw-gtk-theme + nwg-look.
