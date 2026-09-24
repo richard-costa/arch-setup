@@ -40,3 +40,7 @@ gparted
 # Btrfs snapshots (configuration is intentionally separate)
 snapper
 snap-pac
+
+# Shell convenience inherited from CachyOS.
+# tldr <command> gives shorter examples than a full man page.
+tealdeer
