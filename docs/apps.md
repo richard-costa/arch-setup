@@ -16,6 +16,16 @@ to remove a white PWA window border, but the preference name was not recorded.
 Do not guess it; add it here if the issue reappears and the exact setting is
 identified.
 
+## Firefox / Noctalia palette
+
+Working setup:
+
+1. install the **Pywalfox** Firefox extension
+2. enable Noctalia community template `pywalfox-beta4`
+3. restart Firefox once
+
+No separate Python `pywalfox` package is needed for this setup.
+
 ## Flatpak / Stremio
 
 Flatpak is installed with the desktop packages.
