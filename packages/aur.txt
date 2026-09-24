@@ -1,0 +1,2 @@
+# Noctalia login greeter for greetd
+noctalia-greeter
