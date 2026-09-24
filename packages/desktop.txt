@@ -85,7 +85,9 @@ obsidian
 
 # Theming
 # Noctalia's GTK templates use adw-gtk-theme + nwg-look.
+# Its Qt/KColorScheme template is applied through qt6ct.
 # Capitaine is referenced directly by the Niri cursor config.
 capitaine-cursors
 adw-gtk-theme
 nwg-look
+qt6ct
