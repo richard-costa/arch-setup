@@ -11,6 +11,11 @@ sudo systemctl enable --now bluetooth.service
 # Periodically issue TRIM/discard operations for SSD/NVMe storage.
 sudo systemctl enable --now fstrim.timer
 
+# Docker is part of the development setup.
+if systemctl list-unit-files docker.service >/dev/null 2>&1; then
+  sudo systemctl enable --now docker.service
+fi
+
 # If UFW is installed, start with a simple workstation firewall:
 # block unsolicited incoming connections and allow outgoing traffic.
 if systemctl list-unit-files ufw.service >/dev/null 2>&1; then
