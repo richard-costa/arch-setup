@@ -25,12 +25,12 @@ Package manifests and scripts are intentionally commented so dependencies and be
 Start with [docs/archinstall.md](docs/archinstall.md), then:
 
 ```bash
-./install/base.sh
-./install/desktop.sh
-./install/extras.sh      # optional
-./install/aur.sh
-./install/system.sh
-./install/services.sh
+bash install/base.sh
+bash install/desktop.sh
+bash install/extras.sh      # optional
+bash install/aur.sh
+bash install/system.sh
+bash install/services.sh
 ```
 
 ## Config migration
