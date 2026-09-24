@@ -29,10 +29,12 @@ bash install/base.sh
 bash install/desktop.sh
 bash install/extras.sh      # optional
 bash install/aur.sh
+bash install/greeter.sh
 bash install/system.sh
 bash install/services.sh
 bash install/dotfiles.sh
 bash install/host.sh acer-laptop
+bash install/snapper.sh      # optional
 ```
 
 ## Config migration
@@ -56,4 +58,6 @@ See:
 - [Configuration layout](docs/config-layout.md)
 - [Noctalia theming](docs/noctalia-theming.md)
 - [Noctalia personalization](docs/noctalia-personalization.md)
+- [Greeter and keyring](docs/greeter.md)
+- [Snapper](docs/snapper.md)
 - [Current CachyOS baseline](docs/current-cachyos-baseline.md)
