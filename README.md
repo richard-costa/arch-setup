@@ -4,7 +4,22 @@ Personal setup for **vanilla Arch + linux-zen + Niri + Noctalia**.
 
 ## 1. Install Arch
 
-In `archinstall` choose:
+### Required NVMe boot parameter
+
+This laptop needs the following kernel parameter on Linux:
+
+```text
+nvme_core.default_ps_max_latency_us=5500
+```
+
+Before the Arch installer starts, select the Arch install entry in the boot menu,
+press `e`, append the parameter to the kernel command line, and press Enter.
+
+After Arch is installed, make the same parameter persistent in the installed
+bootloader before relying on normal boots. See
+[troubleshooting](docs/troubleshooting.md#nvme-boot-parameter).
+
+Then in `archinstall` choose:
 
 - Minimal profile
 - `linux-zen`
@@ -63,7 +78,7 @@ reboot
 After logging in:
 
 - configure Noctalia from its GUI
-- point wallpapers to `~/Pictures/Wallpapers`
+- restore the wallpaper/video-wallpaper symlinks from the repo
 - enable the wanted Noctalia templates
 - run `qt6ct` once and select the Noctalia KColorScheme for Qt apps
 - use **Btrfs Assistant** if snapshots are wanted
