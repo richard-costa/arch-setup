@@ -1,0 +1,33 @@
+// Keyboard and pointing-device behavior.
+//
+// Keyboard layouts:
+// - br: Brazilian ABNT2
+// - no: Norwegian
+// - ru: Russian
+// - us: US English
+//
+// Alt+Shift cycles through the configured layouts.
+
+input {
+    keyboard {
+        xkb {
+            layout "br,no,ru,us"
+            variant "abnt2,,,"
+            options "grp:alt_shift_toggle"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+        // accel-profile "flat"
+        // accel-speed 0.0
+    }
+
+    focus-follows-mouse max-scroll-amount="0%"
+    workspace-auto-back-and-forth
+}
