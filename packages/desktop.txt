@@ -80,6 +80,8 @@ kitty
 firefox
 
 # Theming
+# Capitaine is referenced by the Niri cursor config.
+capitaine-cursors
 adw-gtk-theme
 nwg-look
 qt6ct
