@@ -4,7 +4,7 @@ Personal setup for **vanilla Arch + linux-zen + Niri + Noctalia**.
 
 ## 1. Install Arch
 
-Using `archinstall`:
+In `archinstall` choose:
 
 - Minimal profile
 - `linux-zen`
@@ -15,9 +15,7 @@ Using `archinstall`:
 - no desktop profile
 - no disk encryption
 
-More detail: [docs/archinstall.md](docs/archinstall.md)
-
-## 2. Bootstrap the workstation
+## 2. Bootstrap
 
 ```bash
 git clone https://github.com/richard-costa/arch-workstation.git
@@ -25,10 +23,10 @@ cd arch-workstation
 bash install.sh
 ```
 
-This installs the core packages, Niri/Noctalia desktop stack, Noctalia Greeter,
-ZRAM, services, dotfiles and this laptop's monitor config.
+The bootstrap installs the core system/desktop packages, builds `yay` if needed,
+installs Noctalia Greeter, configures ZRAM/services, and links the dotfiles.
 
-Optional tools:
+Optional utilities, diagnostics, Btrfs Assistant and Snapper:
 
 ```bash
 bash install/extras.sh
@@ -36,11 +34,13 @@ bash install/extras.sh
 
 ## 3. Verify Noctalia Greeter
 
+Check:
+
 ```bash
 cat /etc/greetd/config.toml
 ```
 
-It should launch:
+It should contain:
 
 ```toml
 [default_session]
@@ -48,29 +48,26 @@ command = "/usr/bin/noctalia-greeter-session"
 user = "greeter"
 ```
 
-If needed, edit that file, then:
+If needed, edit the file, then enable greetd:
 
 ```bash
 sudo systemctl enable greetd.service
 reboot
 ```
 
-See [docs/greeter.md](docs/greeter.md).
-
 ## 4. Personal setup
 
 After logging in:
 
 - configure Noctalia from its GUI
-- enable its Niri / Kitty / GTK / VS Code / Yazi templates
 - point wallpapers to `~/Pictures/Wallpapers`
-- use Btrfs Assistant if snapshots are wanted
+- enable the wanted Noctalia templates
+- use **Btrfs Assistant** if snapshots are wanted
 - install/configure the remembered VS Code extensions
 
 Notes:
 
 - [Noctalia personalization](docs/noctalia-personalization.md)
-- [Noctalia theming](docs/noctalia-theming.md)
 - [VS Code](docs/vscode.md)
 - [Btrfs snapshots](docs/snapper.md)
 
@@ -78,13 +75,11 @@ Notes:
 
 ```text
 packages/   package lists
-install/    small internal setup scripts
-dotfiles/   portable user config
-hosts/      machine-specific config
+install/    small scripts used by install.sh
+dotfiles/   Niri, Fish and Kitty config
 system/     files installed under /etc
-docs/       short setup notes
-scripts/    migration/debugging helpers
+docs/       short personal setup notes
+scripts/    temporary migration/debugging helpers
 ```
 
-Generated Noctalia colors, secrets, keyrings and machine runtime state are not
-stored in Git.
+Generated theme files, secrets, keyrings and runtime state are not stored in Git.
