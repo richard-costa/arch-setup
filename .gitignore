@@ -10,3 +10,7 @@ secrets/
 # They are outputs, not source configuration.
 dotfiles/niri/.config/niri/noctalia.kdl
 dotfiles/kitty/.config/kitty/themes/noctalia.conf
+
+# Noctalia GUI/runtime state may contain machine-specific data or plugin secrets.
+**/.local/state/noctalia/
+**/settings.toml
