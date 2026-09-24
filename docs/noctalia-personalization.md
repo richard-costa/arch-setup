@@ -82,22 +82,55 @@ Generated files include:
 ~/.config/kitty/themes/noctalia.conf
 ```
 
-## Wallpaper rotation
+## Wallpapers
 
-Wallpaper directory:
+The repository contains:
+
+```text
+wallpapers/        static wallpapers
+video-wallpapers/  mpvpaper/video wallpapers
+```
+
+Because the media collection is large, do not copy it into a second location.
+From the repository root on a fresh install, create symlinks instead:
+
+```bash
+mkdir -p "$HOME/Pictures"
+
+ln -sfnT "$PWD/wallpapers" "$HOME/Pictures/Wallpapers"
+ln -sfnT "$PWD/video-wallpapers" "$HOME/Pictures/VideoWallpapers"
+```
+
+Then use this as Noctalia's normal wallpaper directory:
 
 ```text
 ~/Pictures/Wallpapers
 ```
 
-Automation:
+The video collection is available at:
+
+```text
+~/Pictures/VideoWallpapers
+```
+
+for the mpvpaper plugin.
+
+Wallpaper automation:
 
 - enabled
 - rotate every 600 seconds / 10 minutes
 - theme source follows the wallpaper
 
-The exact current/last wallpaper does not belong in the repository because it
-changes automatically.
+The exact current/last wallpaper is runtime state and is not documented as a
+fixed choice.
+
+### Large media in Git
+
+The current media is tracked directly in Git. GitHub warns about files larger
+than 50 MB and rejects normal Git blobs larger than 100 MB.
+
+If future wallpaper videos cross that limit, use Git LFS or move the media
+collection to separate storage rather than adding more bootstrap complexity.
 
 ## Bar
 
@@ -158,7 +191,7 @@ does not grant general passwordless sudo access.
 
 Open Noctalia Settings and verify:
 
-1. wallpaper directory and automatic rotation
+1. wallpaper symlinks, directory and automatic rotation
 2. Niri / Kitty / GTK / KColorScheme templates
 3. community templates used by installed applications
 4. bar widget layout
