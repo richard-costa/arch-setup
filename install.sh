@@ -27,4 +27,4 @@ bash "$ROOT/install/host.sh" acer-laptop
 
 echo
 echo "Core workstation setup finished."
-echo "Next: follow the short Noctalia Greeter section in README.md, then reboot."
+echo "Next: verify /etc/greetd/config.toml as shown in README.md, then reboot."
