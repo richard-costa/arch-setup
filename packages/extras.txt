@@ -2,7 +2,6 @@
 pkgfile
 pacman-contrib
 rebuild-detector
-reflector
 
 # Hardware / disk diagnostics
 smartmontools
@@ -13,26 +12,12 @@ usbutils
 vulkan-tools
 libva-utils
 
-# Firewall
-ufw
-
-# Local-network discovery
-avahi
-nss-mdns
-
 # Audio troubleshooting
 pavucontrol
 
 # External monitor brightness
+# Optional Noctalia integration for DDC/CI-capable monitors.
 ddcutil
-
-# Files / shares
-gvfs-gphoto2
-gvfs-smb
-
-# Disk / partition GUIs
-gnome-disk-utility
-gparted
 
 # Btrfs snapshots / GUI
 # Btrfs Assistant manages Snapper configs, snapshots and restores graphically.
@@ -40,6 +25,6 @@ btrfs-assistant
 snapper
 snap-pac
 
-# Shell convenience inherited from CachyOS.
+# Shell convenience
 # tldr <command> gives shorter examples than a full man page.
 tealdeer
