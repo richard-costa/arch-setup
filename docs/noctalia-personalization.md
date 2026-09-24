@@ -66,7 +66,12 @@ Keep these enabled:
 
 The Alacritty and Cava templates are not needed for this workstation.
 
-Generated files such as these should remain untracked:
+Noctalia writes generated colors outside the repository. The tracked configs only contain the stable integration points:
+
+- Niri includes `noctalia.kdl`
+- Kitty includes `themes/noctalia.conf`
+
+Generated files include:
 
 ```text
 ~/.config/niri/noctalia.kdl
