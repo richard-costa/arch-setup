@@ -1,10 +1,18 @@
-// Portable placeholder for output configuration.
+// Output configuration.
 //
-// The main Niri config always includes this file so the config remains valid on
-// machines without a host-specific monitor layout.
+// Niri already enables connected monitors using their preferred modes and
+// automatically positions them, so no output block is required for the current
+// laptop + LG setup.
 //
-// On this laptop, install/host.sh replaces this file with a symlink to:
-//   hosts/acer-laptop/niri/display.kdl
+// Only add an output block when you want to override Niri's automatic behavior.
+// Run `niri msg outputs` to see connector names and exact available modes.
 //
-// To inspect current output names/modes:
-//   niri msg outputs
+// Example:
+//
+// /- output "HDMI-A-1" {
+//     mode "2560x1080@74.991"
+//     scale 1
+//     position x=1366 y=0
+// }
+//
+// "/-" comments out the output node, so the example above has no effect.
