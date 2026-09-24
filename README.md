@@ -72,8 +72,10 @@ After logging in:
 Notes:
 
 - [Noctalia personalization](docs/noctalia-personalization.md)
+- [Application setup](docs/apps.md)
 - [VS Code](docs/vscode.md)
 - [Btrfs snapshots](docs/snapper.md)
+- [Troubleshooting](docs/troubleshooting.md)
 
 ## Repository layout
 
