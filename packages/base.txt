@@ -8,6 +8,10 @@ git
 man-db
 man-pages
 
+# Bootstrap tooling
+# GNU Stow creates the symlinks from dotfiles/ into the home directory.
+stow
+
 # Networking
 networkmanager
 iwd
