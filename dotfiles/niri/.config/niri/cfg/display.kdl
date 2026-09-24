@@ -1,0 +1,10 @@
+// Portable placeholder for output configuration.
+//
+// The main Niri config always includes this file so the config remains valid on
+// machines without a host-specific monitor layout.
+//
+// On this laptop, install/host.sh replaces this file with a symlink to:
+//   hosts/acer-laptop/niri/display.kdl
+//
+// To inspect current output names/modes:
+//   niri msg outputs
