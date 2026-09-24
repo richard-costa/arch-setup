@@ -1,4 +1,4 @@
-# arch-workstation
+# arch-steup
 
 Personal setup for **vanilla Arch + linux-zen + Niri + Noctalia**.
 
@@ -36,8 +36,8 @@ Minimal Arch does not add Git by itself, so install it first:
 
 ```bash
 sudo pacman -Syu git
-git clone https://github.com/richard-costa/arch-workstation.git
-cd arch-workstation
+git clone https://github.com/richard-costa/arch-setup.git
+cd arch-setup
 bash install.sh
 ```
 
