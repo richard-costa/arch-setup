@@ -78,7 +78,7 @@ reboot
 After logging in:
 
 - configure Noctalia from its GUI
-- restore the wallpaper/video-wallpaper symlinks from the repo
+- copy the repo wallpapers into `~/Pictures/Wallpapers` and video wallpapers into `~/Videos`
 - enable the wanted Noctalia templates
 - run `qt6ct` once and select the Noctalia KColorScheme for Qt apps
 - use **Btrfs Assistant** if snapshots are wanted
