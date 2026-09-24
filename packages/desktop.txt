@@ -16,8 +16,8 @@ gnome-keyring
 accountsservice
 
 # Bluetooth / laptop integration
+# Noctalia talks to BlueZ directly; CLI/debug utilities are optional.
 bluez
-bluez-utils
 upower
 power-profiles-daemon
 
