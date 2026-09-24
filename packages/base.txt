@@ -1,0 +1,28 @@
+# Core system / kernel
+linux-zen
+linux-zen-headers
+amd-ucode
+linux-firmware
+base-devel
+git
+man-db
+man-pages
+
+# Networking
+networkmanager
+iwd
+
+# Audio
+pipewire
+pipewire-alsa
+pipewire-pulse
+wireplumber
+alsa-utils
+alsa-firmware
+sof-firmware
+
+# Hardware / filesystem basics
+btrfs-progs
+dosfstools
+exfatprogs
+ntfs-3g
