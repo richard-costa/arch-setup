@@ -11,10 +11,15 @@ Also install the Firefox extension:
 
 https://addons.mozilla.org/en-US/firefox/addon/pwas-for-firefox/
 
-A previous setup also needed an `about:config` preference changed to `false`
-to remove a white PWA window border, but the preference name was not recorded.
-Do not guess it; add it here if the issue reappears and the exact setting is
-identified.
+If a PWA gets a white/light titlebar or border on Linux:
+
+1. press `Ctrl+L` in the PWA window
+2. open `about:config`
+3. set `firefoxpwa.sitesSetThemeColor` to `false`
+
+PWAsForFirefox documents this preference as allowing sites to override the
+window theme/titlebar color and notes that it can cause problems on some Linux
+desktop environments.
 
 ## Firefox / Noctalia palette
 
