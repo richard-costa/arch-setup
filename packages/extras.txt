@@ -16,9 +16,6 @@ libva-utils
 # Firewall
 ufw
 
-# Memory
-zram-generator
-
 # Local-network discovery
 avahi
 nss-mdns
