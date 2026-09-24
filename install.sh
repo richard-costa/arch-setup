@@ -12,7 +12,7 @@ bash "$ROOT/install/base.sh"
 bash "$ROOT/install/desktop.sh"
 
 # AUR packages currently include Noctalia Greeter.
-# install/aur.sh explains how to install yay if it is missing.
+# install/aur.sh bootstraps yay automatically when needed.
 bash "$ROOT/install/aur.sh"
 
 # Install small /etc configuration owned by this repo (currently ZRAM).
