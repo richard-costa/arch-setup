@@ -25,6 +25,10 @@ alsa-utils
 alsa-firmware
 sof-firmware
 
+# Memory
+# Compressed swap in RAM; configured by system/zram-generator.conf.
+zram-generator
+
 # Hardware / filesystem basics
 btrfs-progs
 dosfstools
