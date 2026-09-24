@@ -16,6 +16,11 @@ if type -q bat
     set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 end
 
+# Default terminal editor. Keeping this in the tracked config replaces the
+# manual "set -Ux EDITOR/VISUAL micro" commands.
+set -gx EDITOR micro
+set -gx VISUAL micro
+
 # Common user executable locations.
 fish_add_path ~/.local/bin ~/.cargo/bin
 
