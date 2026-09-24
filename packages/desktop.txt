@@ -1,0 +1,85 @@
+# Niri + Noctalia
+niri
+noctalia
+xwayland-satellite
+
+# Portals / desktop integration
+xdg-desktop-portal
+xdg-desktop-portal-gnome
+xdg-desktop-portal-gtk
+xdg-user-dirs
+xdg-utils
+xdg-terminal-exec
+
+# Credentials / greeter integration
+gnome-keyring
+libsecret
+accountsservice
+
+# Bluetooth / laptop integration
+bluez
+bluez-utils
+upower
+power-profiles-daemon
+
+# Clipboard
+wl-clipboard
+
+# File manager / removable media
+nautilus
+gvfs
+gvfs-mtp
+
+# AMD graphics + Steam
+mesa
+vulkan-radeon
+lib32-mesa
+lib32-vulkan-radeon
+steam
+
+# Media / thumbnails / codecs
+ffmpeg
+ffmpegthumbnailer
+gst-plugin-pipewire
+gst-libav
+gst-plugins-base
+gst-plugins-good
+gst-plugins-bad
+gst-plugins-ugly
+
+# Archives
+file-roller
+7zip
+unzip
+unrar
+
+# Fonts
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-liberation
+ttf-dejavu
+ttf-meslo-nerd
+
+# Shell / terminal conveniences
+fish
+fzf
+eza
+bat
+micro
+btop
+fastfetch
+ripgrep
+curl
+wget
+rsync
+openssh
+
+# Apps used as desktop defaults
+kitty
+firefox
+
+# Theming
+adw-gtk-theme
+nwg-look
+qt6ct
