@@ -31,6 +31,8 @@ bash install/extras.sh      # optional
 bash install/aur.sh
 bash install/system.sh
 bash install/services.sh
+bash install/dotfiles.sh
+bash install/host.sh acer-laptop
 ```
 
 ## Config migration
@@ -52,4 +54,5 @@ Do not commit survey output. Review it before sharing.
 See:
 
 - [Configuration layout](docs/config-layout.md)
+- [Noctalia theming](docs/noctalia-theming.md)
 - [Current CachyOS baseline](docs/current-cachyos-baseline.md)
