@@ -1,14 +1,9 @@
 # Dotfiles
 
-User-level configuration that should follow you between installations.
+Portable user configuration deployed with GNU Stow:
 
-Planned examples:
+- `niri/` — compositor, keybinds, input, layout and rules
+- `fish/` — shell conveniences
+- `kitty/` — terminal config and Noctalia theme include
 
-- `niri/` — compositor behavior, keybinds, input, window rules
-- `fish/` — shell aliases/functions/settings
-- `kitty/` — terminal configuration
-- `noctalia/` — only settings that are safe and useful to version
-
-Machine-specific details such as monitor connector names belong under `hosts/`, not here.
-
-Secrets, caches, keyrings and generated state do not belong in Git.
+Noctalia-generated colors and runtime state are intentionally not tracked.
