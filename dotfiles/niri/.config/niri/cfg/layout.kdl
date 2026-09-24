@@ -1,0 +1,21 @@
+// Generic window layout. Noctalia's generated noctalia.kdl controls
+// palette-derived focus/border colors.
+
+layout {
+    gaps 8
+
+    focus-ring {
+        width 2
+    }
+
+    center-focused-column "never"
+    background-color "transparent"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    struts {}
+}
