@@ -26,10 +26,14 @@ bash install/base.sh
 bash install/desktop.sh
 bash install/extras.sh
 bash install/aur.sh
+bash install/greeter.sh
 bash install/system.sh
 bash install/services.sh
 bash install/dotfiles.sh
 bash install/host.sh acer-laptop
+
+# Optional Btrfs snapshots
+bash install/snapper.sh
 ```
 
 Notes:
@@ -38,4 +42,4 @@ Notes:
 - `packages/aur.txt` currently contains the Noctalia Greeter.
 - No SSH server is enabled; `openssh` is installed for Git/SSH client use.
 - CUPS and cron are not installed by default.
-- Snapper packages are listed as optional, but snapshot configuration is not automated yet.
+- Snapper packages are optional; `install/snapper.sh` configures root snapshots only when the Btrfs layout is unambiguous.
