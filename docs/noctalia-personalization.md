@@ -84,36 +84,37 @@ Generated files include:
 
 ## Wallpapers
 
-The repository contains:
+The repository keeps the shareable/source collections:
 
 ```text
 wallpapers/        static wallpapers
 video-wallpapers/  mpvpaper/video wallpapers
 ```
 
-Because the media collection is large, do not copy it into a second location.
-From the repository root on a fresh install, create symlinks instead:
+On a fresh install, copy them into the normal user media folders:
 
 ```bash
-mkdir -p "$HOME/Pictures"
+mkdir -p "$HOME/Pictures/Wallpapers" "$HOME/Videos"
 
-ln -sfnT "$PWD/wallpapers" "$HOME/Pictures/Wallpapers"
-ln -sfnT "$PWD/video-wallpapers" "$HOME/Pictures/VideoWallpapers"
+rsync -a wallpapers/ "$HOME/Pictures/Wallpapers/"
+rsync -a video-wallpapers/ "$HOME/Videos/"
 ```
 
-Then use this as Noctalia's normal wallpaper directory:
+Using copies is intentional: the Git repository remains the curated/shareable
+source collection, while Noctalia and mpvpaper use the normal home-directory
+locations independently of where the repository was cloned.
+
+Noctalia wallpaper directory:
 
 ```text
 ~/Pictures/Wallpapers
 ```
 
-The video collection is available at:
+mpvpaper/video wallpaper directory:
 
 ```text
-~/Pictures/VideoWallpapers
+~/Videos
 ```
-
-for the mpvpaper plugin.
 
 Wallpaper automation:
 
@@ -126,11 +127,12 @@ fixed choice.
 
 ### Large media in Git
 
-The current media is tracked directly in Git. GitHub warns about files larger
-than 50 MB and rejects normal Git blobs larger than 100 MB.
+The wallpaper collections are intentionally tracked in Git so they can be
+shared and restored with the rest of the workstation setup.
 
-If future wallpaper videos cross that limit, use Git LFS or move the media
-collection to separate storage rather than adding more bootstrap complexity.
+GitHub warns about files larger than 50 MB and rejects normal Git blobs larger
+than 100 MB. If an individual future video exceeds that limit, use Git LFS for
+that media rather than changing the normal wallpaper workflow.
 
 ## Bar
 
@@ -191,7 +193,7 @@ does not grant general passwordless sudo access.
 
 Open Noctalia Settings and verify:
 
-1. wallpaper symlinks, directory and automatic rotation
+1. wallpaper copies, directories and automatic rotation
 2. Niri / Kitty / GTK / KColorScheme templates
 3. community templates used by installed applications
 4. bar widget layout
