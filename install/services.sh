@@ -19,11 +19,9 @@ if systemctl list-unit-files ufw.service >/dev/null 2>&1; then
   sudo ufw --force enable
 fi
 
-# Noctalia Greeter uses greetd. We enable it for the next boot rather than
-# starting it immediately, which could disrupt the current graphical session.
-if systemctl list-unit-files greetd.service >/dev/null 2>&1; then
-  sudo systemctl enable greetd.service
-fi
+# greetd/Noctalia Greeter is configured separately by install/greeter.sh.
+# Keeping it out of this generic service script makes its PAM/config changes
+# explicit and easier to review.
 
 # pacman-contrib: periodically removes old cached package versions.
 if systemctl list-unit-files paccache.timer >/dev/null 2>&1; then
