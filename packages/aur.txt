@@ -8,3 +8,9 @@ mpvpaper
 onlyoffice-bin
 visual-studio-code-bin
 quarto-cli-bin
+
+# Specialized utility kept from the previous setup
+libvshadow-git
+
+# Alternative Markdown editor; not installed because Apostrophe is the default.
+# marktext-bin
