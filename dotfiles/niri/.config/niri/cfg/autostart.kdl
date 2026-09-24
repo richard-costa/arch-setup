@@ -1,0 +1,3 @@
+// Noctalia provides the bar, launcher, notifications, lock screen,
+// wallpaper, OSDs and other desktop-shell functionality.
+spawn-at-startup "noctalia"
