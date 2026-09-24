@@ -34,7 +34,9 @@ gvfs-smb
 gnome-disk-utility
 gparted
 
-# Btrfs snapshots (configuration is intentionally separate)
+# Btrfs snapshots / GUI
+# Btrfs Assistant manages Snapper configs, snapshots and restores graphically.
+btrfs-assistant
 snapper
 snap-pac
 
