@@ -4,36 +4,25 @@ Personal Arch Linux workstation bootstrap and configuration.
 
 ## Stack
 
-- Arch Linux
-- linux-zen
-- Niri
-- Noctalia
-- Noctalia Greeter / greetd
-- Fish
-- Kitty
-- PipeWire / WirePlumber
-- NetworkManager
-- Btrfs + ZRAM
-- AMDGPU / Mesa / RADV
+Arch + linux-zen + Niri + Noctalia + Fish + Kitty + PipeWire + NetworkManager + Btrfs/ZRAM.
 
-## Repository layout
+## How the repo fits together
 
 ```text
-arch-workstation/
-├── install/      # bootstrap scripts
-├── packages/     # pacman/AUR package manifests
-├── system/       # files installed under /etc
-├── scripts/      # inspection and maintenance helpers
-├── docs/         # installation and migration notes
-├── dotfiles/     # personal application configuration (later)
-└── hosts/        # machine-specific configuration (later)
+packages/   what software should exist
+install/    installs packages and enables/configures them
+system/     version-controlled files that get copied into /etc
+dotfiles/   portable user configuration
+hosts/      hardware/machine-specific configuration
+scripts/    inspection and maintenance helpers
+docs/       short explanations and migration notes
 ```
+
+Package manifests and scripts are intentionally commented so dependencies and behavior remain understandable later.
 
 ## Fresh install
 
-Start with [docs/archinstall.md](docs/archinstall.md).
-
-Typical post-install flow:
+Start with [docs/archinstall.md](docs/archinstall.md), then:
 
 ```bash
 ./install/base.sh
@@ -44,23 +33,23 @@ Typical post-install flow:
 ./install/services.sh
 ```
 
-## Package philosophy
+## Config migration
 
-- `base.txt`: foundational OS/plumbing
-- `desktop.txt`: Niri/Noctalia desktop functionality expected every day
-- `extras.txt`: useful but removable conveniences
-- `aur.txt`: AUR-only packages
-
-Personal applications can be added separately without mixing them into the core workstation plumbing.
-
-## Migration survey
+System overview:
 
 ```bash
 bash scripts/system-survey.sh
 ```
 
-The survey is intended for migration/debugging and should not be committed as machine state.
+Niri/Fish/Kitty/audio config review:
 
-## Current status
+```bash
+bash scripts/config-survey.sh
+```
 
-This repository is being built from an existing CachyOS + Niri + Noctalia installation. See [docs/current-cachyos-baseline.md](docs/current-cachyos-baseline.md).
+Do not commit survey output. Review it before sharing.
+
+See:
+
+- [Configuration layout](docs/config-layout.md)
+- [Current CachyOS baseline](docs/current-cachyos-baseline.md)
