@@ -1,6 +1,5 @@
 # Core system / kernel
 linux-zen
-linux-zen-headers
 amd-ucode
 linux-firmware
 base-devel
@@ -13,21 +12,25 @@ man-pages
 stow
 
 # Networking
+# NetworkManager already uses wpa_supplicant by default; iwd is not needed
+# unless we deliberately switch NetworkManager to that backend.
 networkmanager
-iwd
 
 # Audio
+# pipewire-pulse / pipewire-alsa pull the PipeWire core in, but keeping
+# pipewire explicit makes the intended audio stack obvious.
 pipewire
 pipewire-alsa
 pipewire-pulse
 wireplumber
 alsa-utils
-alsa-firmware
-sof-firmware
 
 # Memory
 # Compressed swap in RAM; configured by system/zram-generator.conf.
 zram-generator
+
+# Firewall
+ufw
 
 # Hardware / filesystem basics
 btrfs-progs
