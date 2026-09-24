@@ -3,6 +3,9 @@ pkgfile
 pacman-contrib
 rebuild-detector
 
+# Bluetooth troubleshooting
+bluez-utils
+
 # Hardware / disk diagnostics
 smartmontools
 hwinfo
