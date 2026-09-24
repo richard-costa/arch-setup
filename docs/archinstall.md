@@ -22,12 +22,14 @@ After first boot:
 git clone <repo-url>
 cd arch-workstation
 
-./install/base.sh
-./install/desktop.sh
-./install/extras.sh
-./install/aur.sh
-./install/system.sh
-./install/services.sh
+bash install/base.sh
+bash install/desktop.sh
+bash install/extras.sh
+bash install/aur.sh
+bash install/system.sh
+bash install/services.sh
+bash install/dotfiles.sh
+bash install/host.sh acer-laptop
 ```
 
 Notes:
