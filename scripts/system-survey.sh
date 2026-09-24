@@ -140,7 +140,9 @@ user_service_state \
 section "FILESYSTEM / MOUNTS"
 run lsblk -o NAME,TYPE,FSTYPE,SIZE,MOUNTPOINTS
 printf '\nMount targets/options (sources omitted):\n'
-findmnt -rn -o TARGET,FSTYPE,OPTIONS 2>/dev/null || true
+findmnt -rn -o TARGET,FSTYPE,OPTIONS 2>/dev/null \
+  | sed -E 's|/run/media/[^/]+/|/run/media/[user]/|g' \
+  || true
 
 if findmnt -n -o FSTYPE / 2>/dev/null | grep -q btrfs; then
   printf '\nBtrfs subvolumes:\n'
@@ -148,7 +150,7 @@ if findmnt -n -o FSTYPE / 2>/dev/null | grep -q btrfs; then
 fi
 
 section "SWAP / ZRAM"
-run swapon --show --output=NAME,TYPE,SIZE,USED,PRIO
+run swapon --show
 if have zramctl; then
   run zramctl
 fi
@@ -173,7 +175,9 @@ fi
 
 section "AUDIO"
 if have wpctl; then
-  wpctl status 2>/dev/null || true
+  wpctl status 2>/dev/null \
+    | sed -E "s/${USER:-user}/[user]/g; s/$(hostname)/[host]/g" \
+    || true
 else
   echo "wpctl not installed"
 fi
