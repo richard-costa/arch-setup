@@ -1,63 +1,90 @@
 # arch-workstation
 
-Personal Arch Linux workstation bootstrap and configuration.
+Personal setup for **vanilla Arch + linux-zen + Niri + Noctalia**.
 
-## Stack
+## 1. Install Arch
 
-Arch + linux-zen + Niri + Noctalia + Fish + Kitty + PipeWire + NetworkManager + Btrfs/ZRAM.
+Using `archinstall`:
 
-## How the repo fits together
+- Minimal profile
+- `linux-zen`
+- NetworkManager
+- PipeWire
+- Btrfs with default subvolumes
+- multilib enabled
+- no desktop profile
+- no disk encryption
+
+More detail: [docs/archinstall.md](docs/archinstall.md)
+
+## 2. Bootstrap the workstation
+
+```bash
+git clone https://github.com/richard-costa/arch-workstation.git
+cd arch-workstation
+bash install.sh
+```
+
+This installs the core packages, Niri/Noctalia desktop stack, Noctalia Greeter,
+ZRAM, services, dotfiles and this laptop's monitor config.
+
+Optional tools:
+
+```bash
+bash install/extras.sh
+```
+
+## 3. Verify Noctalia Greeter
+
+```bash
+cat /etc/greetd/config.toml
+```
+
+It should launch:
+
+```toml
+[default_session]
+command = "/usr/bin/noctalia-greeter-session"
+user = "greeter"
+```
+
+If needed, edit that file, then:
+
+```bash
+sudo systemctl enable greetd.service
+reboot
+```
+
+See [docs/greeter.md](docs/greeter.md).
+
+## 4. Personal setup
+
+After logging in:
+
+- configure Noctalia from its GUI
+- enable its Niri / Kitty / GTK / VS Code / Yazi templates
+- point wallpapers to `~/Pictures/Wallpapers`
+- use Btrfs Assistant if snapshots are wanted
+- install/configure the remembered VS Code extensions
+
+Notes:
+
+- [Noctalia personalization](docs/noctalia-personalization.md)
+- [Noctalia theming](docs/noctalia-theming.md)
+- [VS Code](docs/vscode.md)
+- [Btrfs snapshots](docs/snapper.md)
+
+## Repository layout
 
 ```text
-packages/   what software should exist
-install/    installs packages and enables/configures them
-system/     version-controlled files that get copied into /etc
-dotfiles/   portable user configuration
-hosts/      hardware/machine-specific configuration
-scripts/    inspection and maintenance helpers
-docs/       short explanations and migration notes
+packages/   package lists
+install/    small internal setup scripts
+dotfiles/   portable user config
+hosts/      machine-specific config
+system/     files installed under /etc
+docs/       short setup notes
+scripts/    migration/debugging helpers
 ```
 
-Package manifests and scripts are intentionally commented so dependencies and behavior remain understandable later.
-
-## Fresh install
-
-Start with [docs/archinstall.md](docs/archinstall.md), then:
-
-```bash
-bash install/base.sh
-bash install/desktop.sh
-bash install/extras.sh      # optional
-bash install/aur.sh
-bash install/greeter.sh
-bash install/system.sh
-bash install/services.sh
-bash install/dotfiles.sh
-bash install/host.sh acer-laptop
-bash install/snapper.sh      # optional
-```
-
-## Config migration
-
-System overview:
-
-```bash
-bash scripts/system-survey.sh
-```
-
-Niri/Fish/Kitty/audio config review:
-
-```bash
-bash scripts/config-survey.sh
-```
-
-Do not commit survey output. Review it before sharing.
-
-See:
-
-- [Configuration layout](docs/config-layout.md)
-- [Noctalia theming](docs/noctalia-theming.md)
-- [Noctalia personalization](docs/noctalia-personalization.md)
-- [Greeter and keyring](docs/greeter.md)
-- [Snapper](docs/snapper.md)
-- [Current CachyOS baseline](docs/current-cachyos-baseline.md)
+Generated Noctalia colors, secrets, keyrings and machine runtime state are not
+stored in Git.
