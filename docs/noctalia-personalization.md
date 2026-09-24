@@ -141,6 +141,19 @@ These placements are monitor-specific and should be adjusted through Noctalia's
 GUI if the monitor arrangement changes rather than being automated by this
 repository.
 
+## Greeter sync
+
+In Noctalia Settings → Security → Greeter, enable automatic sync.
+
+To allow appearance-only greeter sync without repeated sudo prompts:
+
+```bash
+sudo noctalia-greeter passwordless-sync enable "$USER"
+```
+
+This creates the dedicated Polkit permission supported by Noctalia Greeter; it
+does not grant general passwordless sudo access.
+
 ## After a fresh install
 
 Open Noctalia Settings and verify:
