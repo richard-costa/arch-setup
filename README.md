@@ -17,7 +17,10 @@ In `archinstall` choose:
 
 ## 2. Bootstrap
 
+Minimal Arch does not add Git by itself, so install it first:
+
 ```bash
+sudo pacman -Syu git
 git clone https://github.com/richard-costa/arch-workstation.git
 cd arch-workstation
 bash install.sh
@@ -62,6 +65,7 @@ After logging in:
 - configure Noctalia from its GUI
 - point wallpapers to `~/Pictures/Wallpapers`
 - enable the wanted Noctalia templates
+- run `qt6ct` once and select the Noctalia KColorScheme for Qt apps
 - use **Btrfs Assistant** if snapshots are wanted
 - install/configure the remembered VS Code extensions
 
