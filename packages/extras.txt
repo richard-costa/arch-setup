@@ -1,0 +1,42 @@
+# Package maintenance
+pkgfile
+pacman-contrib
+rebuild-detector
+reflector
+
+# Hardware / disk diagnostics
+smartmontools
+hwinfo
+dmidecode
+pciutils
+usbutils
+vulkan-tools
+libva-utils
+
+# Firewall
+ufw
+
+# Memory
+zram-generator
+
+# Local-network discovery
+avahi
+nss-mdns
+
+# Audio troubleshooting
+pavucontrol
+
+# External monitor brightness
+ddcutil
+
+# Files / shares
+gvfs-gphoto2
+gvfs-smb
+
+# Disk / partition GUIs
+gnome-disk-utility
+gparted
+
+# Btrfs snapshots (configuration is intentionally separate)
+snapper
+snap-pac
