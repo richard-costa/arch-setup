@@ -1,49 +1,30 @@
-# Snapper
+# Btrfs snapshots
 
-Snapper is optional but recommended because this workstation uses Btrfs.
+Use **Btrfs Assistant** rather than a custom setup script.
 
-Run:
+Install the optional extras:
 
 ```bash
-bash install/snapper.sh
+bash install/extras.sh
 ```
 
-The script only creates a root configuration when:
+Then open **Btrfs Assistant** and create/manage a Snapper configuration for `/`.
 
-- `/` is Btrfs
-- no Snapper `root` config already exists
-- `/.snapshots` is not already a mount point/subvolume/path
+Relevant packages:
 
-If the layout is ambiguous, it stops instead of deleting or remounting anything.
+- `btrfs-assistant` — GUI
+- `snapper` — snapshot backend
+- `snap-pac` — snapshots around pacman transactions
 
-## What is snapshotted
+The Archinstall layout keeps `/home` in a separate Btrfs subvolume, so root
+snapshots do not automatically roll personal files backward.
 
-The Archinstall layout uses separate Btrfs subvolumes such as `@home`.
-Btrfs snapshots are not recursive, so a snapshot of `/` does **not** include
-separate subvolumes such as `/home`.
-
-That is desirable here: system rollback should not silently roll personal files
-back in time.
-
-## Automation
-
-`snapper-timeline.timer` creates timeline snapshots and
-`snapper-cleanup.timer` removes snapshots according to Snapper's retention
-configuration.
-
-The optional `snap-pac` package also creates snapshots around pacman
-transactions.
-
-## Restore
-
-This repository does not automate rollback. Restoring the root subvolume is a
-recovery operation that should be done deliberately, often from an Arch live
-environment.
-
-Useful inspection commands:
+Useful CLI inspection:
 
 ```bash
+sudo snapper list-configs
 sudo snapper -c root list
 sudo btrfs subvolume list /
-systemctl list-timers 'snapper-*'
 ```
+
+Rollback is intentionally not automated by this repository.
