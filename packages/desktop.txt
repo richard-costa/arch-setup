@@ -4,16 +4,15 @@ noctalia
 xwayland-satellite
 
 # Portals / desktop integration
-xdg-desktop-portal
+# xdg-desktop-portal-gnome pulls the portal core and GTK backend.
 xdg-desktop-portal-gnome
-xdg-desktop-portal-gtk
-xdg-user-dirs
 xdg-utils
 xdg-terminal-exec
 
 # Credentials / greeter integration
+# AccountsService is useful for greeter avatars; GNOME Keyring provides the
+# Secret Service used by desktop apps and Noctalia.
 gnome-keyring
-libsecret
 accountsservice
 
 # Bluetooth / laptop integration
@@ -26,19 +25,18 @@ power-profiles-daemon
 wl-clipboard
 
 # File manager / removable media
+# Nautilus pulls gvfs and xdg-user-dirs through its dependencies.
 nautilus
-gvfs
 gvfs-mtp
 
 # AMD graphics + Steam
-mesa
+# Niri pulls Mesa itself; these add RADV and the 32-bit gaming stack.
 vulkan-radeon
 lib32-mesa
 lib32-vulkan-radeon
 steam
 
 # Media / thumbnails / codecs
-ffmpeg
 ffmpegthumbnailer
 gst-plugin-pipewire
 gst-libav
@@ -74,14 +72,20 @@ curl
 wget
 rsync
 openssh
+yazi
 
-# Apps used as desktop defaults
+# Everyday applications
 kitty
 firefox
+gnome-text-editor
+apostrophe
+loupe
+mpv
+obsidian
 
 # Theming
-# Capitaine is referenced by the Niri cursor config.
+# Noctalia's GTK templates use adw-gtk-theme + nwg-look.
+# Capitaine is referenced directly by the Niri cursor config.
 capitaine-cursors
 adw-gtk-theme
 nwg-look
-qt6ct
