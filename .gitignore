@@ -1,0 +1,7 @@
+*.key
+*.pem
+secrets/
+.local/share/keyrings/
+.config/NetworkManager/
+.local/state/
+.cache/
