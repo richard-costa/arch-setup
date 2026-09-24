@@ -1,2 +1,10 @@
-# Noctalia login greeter for greetd
+# Login greeter
 noctalia-greeter
+
+# Noctalia mpvpaper widget/plugin
+mpvpaper
+
+# Personal applications not shipped in the official Arch repositories
+onlyoffice-bin
+visual-studio-code-bin
+quarto-cli-bin
