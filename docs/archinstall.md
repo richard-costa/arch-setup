@@ -1,6 +1,6 @@
 # Archinstall choices
 
-Use the minimal profile rather than Archinstall's Niri desktop profile.
+Use Archinstall only for the minimal base system.
 
 Recommended choices:
 
@@ -9,37 +9,23 @@ Recommended choices:
 - Networking: **NetworkManager**
 - Audio: **PipeWire**
 - Filesystem: **Btrfs**
-- Btrfs default subvolume layout: **yes**
-- Disk encryption: **no** (current preference)
-- Desktop environment / window manager: **none**
+- Default Btrfs subvolumes: **yes**
+- Encryption: **no**
+- Desktop profile: **none**
 - Multilib: **enabled**
-- Bootloader: choose normally in Archinstall
-- Swap: disk swap optional; ZRAM is configured by this repository
 
-After first boot:
+After the first boot:
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/richard-costa/arch-workstation.git
 cd arch-workstation
-
-bash install/base.sh
-bash install/desktop.sh
-bash install/extras.sh
-bash install/aur.sh
-bash install/greeter.sh
-bash install/system.sh
-bash install/services.sh
-bash install/dotfiles.sh
-bash install/host.sh acer-laptop
-
-# Optional Btrfs snapshots
-bash install/snapper.sh
+bash install.sh
 ```
 
-Notes:
+Optional tools:
 
-- `packages/extras.txt` is intentionally optional.
-- `packages/aur.txt` currently contains the Noctalia Greeter.
-- No SSH server is enabled; `openssh` is installed for Git/SSH client use.
-- CUPS and cron are not installed by default.
-- Snapper packages are optional; `install/snapper.sh` configures root snapshots only when the Btrfs layout is unambiguous.
+```bash
+bash install/extras.sh
+```
+
+Then return to the root README for the short greeter and Noctalia setup steps.
