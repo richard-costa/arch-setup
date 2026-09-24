@@ -55,4 +55,5 @@ See:
 
 - [Configuration layout](docs/config-layout.md)
 - [Noctalia theming](docs/noctalia-theming.md)
+- [Noctalia personalization](docs/noctalia-personalization.md)
 - [Current CachyOS baseline](docs/current-cachyos-baseline.md)
