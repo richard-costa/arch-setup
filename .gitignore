@@ -5,3 +5,8 @@ secrets/
 .config/NetworkManager/
 .local/state/
 .cache/
+
+# Noctalia renders these from the current wallpaper palette.
+# They are outputs, not source configuration.
+dotfiles/niri/.config/niri/noctalia.kdl
+dotfiles/kitty/.config/kitty/themes/noctalia.conf
