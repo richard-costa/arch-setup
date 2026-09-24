@@ -66,6 +66,10 @@ Keep these enabled:
 
 The Alacritty and Cava templates are not needed for this workstation.
 
+For Qt applications, run `qt6ct` once after installation, choose the
+`noctalia (KColorScheme)` color scheme, and apply it. Niri exports
+`QT_QPA_PLATFORMTHEME=qt6ct`.
+
 Noctalia writes generated colors outside the repository. The tracked configs only contain the stable integration points:
 
 - Niri includes `noctalia.kdl`
