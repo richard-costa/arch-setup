@@ -1,0 +1,33 @@
+# Package maintenance
+pkgfile
+pacman-contrib
+rebuild-detector
+
+# Bluetooth troubleshooting
+bluez-utils
+
+# Hardware / disk diagnostics
+smartmontools
+hwinfo
+dmidecode
+pciutils
+usbutils
+vulkan-tools
+libva-utils
+
+# Audio troubleshooting
+pavucontrol
+
+# External monitor brightness
+# Optional Noctalia integration for DDC/CI-capable monitors.
+ddcutil
+
+# Btrfs snapshots / GUI
+# Btrfs Assistant manages Snapper configs, snapshots and restores graphically.
+btrfs-assistant
+snapper
+snap-pac
+
+# Shell convenience
+# tldr <command> gives shorter examples than a full man page.
+tealdeer

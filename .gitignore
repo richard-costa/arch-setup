@@ -1,6 +1,8 @@
 *.key
 *.pem
 secrets/
+
+# Never commit local credentials/state copied into the repository.
 .local/share/keyrings/
 .config/NetworkManager/
 .local/state/

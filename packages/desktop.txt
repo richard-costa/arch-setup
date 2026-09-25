@@ -1,0 +1,128 @@
+# Niri + Noctalia
+niri
+noctalia
+xwayland-satellite
+
+# Portals / desktop integration
+# xdg-terminal-exec lets GUI apps such as Nautilus launch terminal apps like
+# Micro through the user's preferred terminal.
+xdg-desktop-portal-gnome
+xdg-utils
+xdg-terminal-exec
+
+# Credentials / greeter integration
+# AccountsService is useful for greeter avatars; GNOME Keyring provides the
+# Secret Service used by desktop apps and Noctalia.
+gnome-keyring
+accountsservice
+
+# Bluetooth / laptop integration
+# Noctalia talks to BlueZ directly; CLI/debug utilities are optional.
+bluez
+upower
+power-profiles-daemon
+
+# Clipboard
+wl-clipboard
+
+# File manager / removable media
+# Nautilus pulls gvfs and xdg-user-dirs through its dependencies.
+nautilus
+gvfs-mtp
+
+# AMD graphics + Steam
+# Niri pulls Mesa itself; these add RADV and the 32-bit gaming stack.
+vulkan-radeon
+lib32-mesa
+lib32-vulkan-radeon
+steam
+
+# Media / thumbnails / codecs
+ffmpegthumbnailer
+gst-plugin-pipewire
+gst-libav
+gst-plugins-base
+gst-plugins-good
+gst-plugins-bad
+gst-plugins-ugly
+mpv
+socat
+
+# Archives
+file-roller
+7zip
+unzip
+unrar
+
+# Fonts
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-liberation
+ttf-dejavu
+ttf-meslo-nerd
+
+# Shell / terminal conveniences
+fish
+fzf
+eza
+bat
+micro
+btop
+fastfetch
+ripgrep
+curl
+wget
+rsync
+openssh
+yazi
+tree
+
+# Development / databases
+# DBeaver needs a Java runtime; declaring one avoids an interactive provider
+# choice during the bootstrap.
+jre-openjdk
+dbeaver
+docker
+docker-compose
+sqlite
+sqlitebrowser
+# SQLite Browser is Qt5; this provides its native Wayland platform plugin.
+qt5-wayland
+
+# Documents / PDF and ebook tools
+okular
+poppler
+qpdf
+img2pdf
+imagemagick
+mupdf-tools
+ebook-tools
+kdegraphics-mobipocket
+xournalpp
+
+# Creative / study / productivity applications
+krita
+anki
+spotify-launcher
+flatpak
+gnome-text-editor
+apostrophe
+loupe
+obsidian
+
+# Browser / PWA support
+firefox
+firefoxpwa
+
+# Terminal
+kitty
+
+# Theming
+# Noctalia's GTK templates use adw-gtk-theme + nwg-look.
+# Its Qt/KColorScheme template is applied through qt6ct.
+# Capitaine is referenced directly by the Niri cursor config.
+capitaine-cursors
+adw-gtk-theme
+nwg-look
+qt6ct

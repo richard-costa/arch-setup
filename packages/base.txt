@@ -1,0 +1,39 @@
+# Core system / kernel
+linux-zen
+amd-ucode
+linux-firmware
+base-devel
+git
+man-db
+man-pages
+
+# Bootstrap tooling
+# GNU Stow creates the symlinks from dotfiles/ into the home directory.
+stow
+
+# Networking
+# NetworkManager already uses wpa_supplicant by default; iwd is not needed
+# unless we deliberately switch NetworkManager to that backend.
+networkmanager
+
+# Audio
+# pipewire-pulse / pipewire-alsa pull the PipeWire core in, but keeping
+# pipewire explicit makes the intended audio stack obvious.
+pipewire
+pipewire-alsa
+pipewire-pulse
+wireplumber
+alsa-utils
+
+# Memory
+# Compressed swap in RAM; configured by system/zram-generator.conf.
+zram-generator
+
+# Firewall
+ufw
+
+# Hardware / filesystem basics
+btrfs-progs
+dosfstools
+exfatprogs
+ntfs-3g
