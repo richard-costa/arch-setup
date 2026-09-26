@@ -15,6 +15,9 @@ bash "$ROOT/install/desktop.sh"
 # install/aur.sh bootstraps yay automatically when needed.
 bash "$ROOT/install/aur.sh"
 
+# Install the Noctalia Greeter configuration and enable greetd.
+bash "$ROOT/install/greeter.sh"
+
 # Install small /etc configuration owned by this repo (currently ZRAM).
 bash "$ROOT/install/system.sh"
 
@@ -26,4 +29,4 @@ bash "$ROOT/install/dotfiles.sh"
 
 echo
 echo "Core workstation setup finished."
-echo "Next: verify /etc/greetd/config.toml as shown in README.md, then reboot."
+echo "Reboot to start the Noctalia Greeter."

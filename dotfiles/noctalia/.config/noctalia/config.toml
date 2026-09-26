@@ -1,0 +1,5 @@
+[shell]
+polkit_agent = true
+
+[hooks]
+colors_changed = "ya emit-to 0 app:theme"

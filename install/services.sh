@@ -6,6 +6,7 @@ set -euo pipefail
 
 # Core connectivity.
 sudo systemctl enable --now NetworkManager.service
+sudo systemctl enable --now systemd-resolved.service
 sudo systemctl enable --now bluetooth.service
 
 # Periodically issue TRIM/discard operations for SSD/NVMe storage.
@@ -14,6 +15,11 @@ sudo systemctl enable --now fstrim.timer
 # Docker is part of the development setup.
 if systemctl list-unit-files docker.service >/dev/null 2>&1; then
   sudo systemctl enable --now docker.service
+fi
+
+# Tailscale is optional and installed through install/extras.sh when wanted.
+if systemctl list-unit-files tailscaled.service >/dev/null 2>&1; then
+  sudo systemctl enable --now tailscaled.service
 fi
 
 # If UFW is installed, start with a simple workstation firewall:
