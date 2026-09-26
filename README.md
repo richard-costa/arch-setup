@@ -1,4 +1,4 @@
-# arch-steup
+# arch-setup
 
 Personal setup for **vanilla Arch + linux-zen + Niri + Noctalia**.
 
@@ -42,7 +42,8 @@ bash install.sh
 ```
 
 The bootstrap installs the core system/desktop packages, builds `yay` if needed,
-installs Noctalia Greeter, configures ZRAM/services, and links the dotfiles.
+installs and configures Noctalia Greeter, configures ZRAM/DNS/services, and
+links the dotfiles.
 
 Optional utilities, diagnostics, Btrfs Assistant and Snapper:
 
@@ -50,28 +51,21 @@ Optional utilities, diagnostics, Btrfs Assistant and Snapper:
 bash install/extras.sh
 ```
 
-## 3. Verify Noctalia Greeter
-
-Check:
-
-```bash
-cat /etc/greetd/config.toml
-```
-
-It should contain:
-
-```toml
-[default_session]
-command = "/usr/bin/noctalia-greeter-session"
-user = "greeter"
-```
-
-If needed, edit the file, then enable greetd:
+This optional set includes Tailscale. Its service is enabled automatically;
+authenticate this machine with your Tailscale account after installation:
 
 ```bash
-sudo systemctl enable greetd.service
-reboot
+sudo tailscale up
 ```
+
+## 3. Reboot Into Noctalia Greeter
+
+The bootstrap configures `/etc/greetd/config.toml`, creates the dedicated
+`greeter` system account when needed, and enables `greetd.service`.
+
+It also configures NetworkManager to use `systemd-resolved` and links
+`/etc/resolv.conf` to its local DNS stub. This preserves DNS handling for
+ordinary networks and Tailscale's private DNS routes.
 
 ## 4. Personal setup
 

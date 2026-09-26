@@ -3,6 +3,9 @@ pkgfile
 pacman-contrib
 rebuild-detector
 
+# Private mesh VPN; authenticate after install with: sudo tailscale up
+tailscale
+
 # Bluetooth troubleshooting
 bluez-utils
 

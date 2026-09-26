@@ -15,7 +15,7 @@ fi
 
 cd "$ROOT/dotfiles"
 
-stow --restow --no-folding --target="$HOME" niri fish kitty
+stow --restow --no-folding --target="$HOME" niri fish kitty noctalia yazi
 
 # Noctalia generates these after login/theme changes. Empty placeholders keep
 # Niri and Kitty happy before the first generated palette exists.

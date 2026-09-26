@@ -16,7 +16,8 @@ machine-specific state and plugin secrets.
 
 ## Stable config
 
-Keep these settings in `~/.config/noctalia/config.toml`:
+These settings are tracked in `dotfiles/noctalia/` and deployed to
+`~/.config/noctalia/config.toml` by the bootstrap:
 
 ```toml
 [shell]
@@ -28,6 +29,10 @@ colors_changed = "ya emit-to 0 app:theme"
 
 The color-change hook tells Yazi to refresh its theme whenever Noctalia changes
 the wallpaper-derived palette.
+
+`dotfiles/yazi/.config/yazi/theme.toml` selects Noctalia's generated Yazi
+theme. Neither file contains runtime state, generated colors, location data, or
+secrets.
 
 ## Theme
 
