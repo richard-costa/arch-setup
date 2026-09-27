@@ -77,7 +77,7 @@ if [[ ! -e "$NOCTALIA_SETTINGS" ]]; then
     mv "$tmp_settings" "$NOCTALIA_SETTINGS"
     echo "Seeded initial Noctalia settings."
 else
-    echo "Existing Noctalia settings found; leaving it unchanged."
+    echo "Existing Noctalia settings found; leaving them unchanged."
 fi
 
 # Noctalia generates these after login/theme changes. Empty placeholders keep
