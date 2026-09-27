@@ -23,13 +23,9 @@ desktop environments.
 
 ## Firefox / Noctalia palette
 
-Working setup:
-
-1. install the **Pywalfox** Firefox extension
-2. enable Noctalia community template `pywalfox-beta4`
-3. restart Firefox once
-
-No separate Python `pywalfox` package is needed for this setup.
+The Noctalia first-install seed enables the community template `pywalfox`.
+Firefox still needs the **Pywalfox** browser extension installed once. No
+separate Python `pywalfox` package is needed.
 
 ## Flatpak / Stremio
 
@@ -76,28 +72,15 @@ y       copy / yank
 p       paste in the destination directory
 ```
 
-Noctalia's Yazi template is refreshed by the tracked
-`colors_changed = "ya emit-to 0 app:theme"` hook.
+The first-install Noctalia seed enables the Yazi template, and the tracked
+`colors_changed = "ya emit-to 0 app:theme"` hook refreshes Yazi when the palette
+changes.
 
 ## PDF / ebook tools
 
-The package list includes:
+The package list includes Okular, Poppler utilities, qpdf, img2pdf,
+ImageMagick, MuPDF tools, ebook-tools and kdegraphics-mobipocket.
 
-- Okular for viewing
-- Poppler utilities
-- qpdf
-- img2pdf
-- ImageMagick
-- MuPDF tools
-- ebook-tools
-- kdegraphics-mobipocket
-
-These cover the PDF manipulation workflow plus EPUB/MOBI support in the KDE
-document stack.
-
-## Markdown editors
+## Markdown editor
 
 Apostrophe is installed as the normal Markdown editor.
-
-`marktext-bin` is kept commented in `packages/aur.txt` as an alternative,
-not installed by default.
