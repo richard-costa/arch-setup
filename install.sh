@@ -24,8 +24,12 @@ bash "$ROOT/install/system.sh"
 # Enable networking, Bluetooth, TRIM, firewall/timers when installed, and NTP.
 bash "$ROOT/install/services.sh"
 
-# Link portable user configuration before making Fish the login shell so the
-# first Fish login already has the tracked configuration available.
+# Copy the curated wallpaper collections into the normal user media folders so
+# Noctalia and mpvpaper can use their seeded directories on first login.
+bash "$ROOT/install/media.sh"
+
+# Link portable user configuration and seed Noctalia's first-install GUI
+# preferences before making Fish the login shell.
 bash "$ROOT/install/dotfiles.sh"
 
 # Fish is installed by install/desktop.sh. Make it the login shell only after
