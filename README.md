@@ -278,8 +278,16 @@ After logging in:
 
 - configure Noctalia from its GUI
 - copy the repo wallpapers into `~/Pictures/Wallpapers` and video wallpapers into `~/Videos`
-- enable the wanted Noctalia templates
-- run `qt6ct` once and select the Noctalia KColorScheme for Qt apps
+- enable the wanted Noctalia templates, including **KColorScheme** for Qt applications
+- install the KDE-patched qt6ct build used by Noctalia:
+
+  ```bash
+  yay -S qt6ct-kde
+  ```
+
+  If prompted, allow it to replace the regular `qt6ct` package.
+
+- run `qt6ct`, choose **`noctalia (KColorScheme)`** under **Appearance → Color scheme**, and apply it
 - use **Btrfs Assistant** if snapshots are wanted
 - install/configure the remembered VS Code extensions
 
