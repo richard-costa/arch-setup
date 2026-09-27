@@ -207,6 +207,31 @@ The output should contain:
 nvme_core.default_ps_max_latency_us=5500
 ```
 
+### First boot: connect Wi-Fi
+
+The installed system uses NetworkManager. Check the device state:
+
+```bash
+nmcli device status
+```
+
+On this laptop the Wi-Fi interface is `wlp2s0`. List available networks and
+connect to the wanted SSID:
+
+```bash
+nmcli device wifi list
+nmcli --ask device wifi connect "YOUR_WIFI_NAME" ifname wlp2s0
+```
+
+Enter the Wi-Fi password when prompted, then verify connectivity:
+
+```bash
+ping -c 3 archlinux.org
+```
+
+If the Wi-Fi interface name differs, use the Wi-Fi device shown by
+`nmcli device status`.
+
 The repo bootstrap will install/configure PipeWire, ZRAM, networking services,
 Niri/Noctalia and the rest of the system after the base Arch install.
 
