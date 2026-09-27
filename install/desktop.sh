@@ -18,11 +18,3 @@ fi
 install_manifest "$ROOT/packages/desktop.txt" \
   pipewire-jack \
   qt6-multimedia-ffmpeg
-
-# Fish is installed here, but changing the login shell is intentionally left
-# as an explicit user action rather than silently modifying the account.
-if command -v fish >/dev/null && [[ "$SHELL" != "/usr/bin/fish" ]]; then
-  echo
-  echo "Fish is installed. To make it your login shell:"
-  echo "  chsh -s /usr/bin/fish"
-fi
