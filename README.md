@@ -59,22 +59,66 @@ ping -c 3 archlinux.org
 If the Wi-Fi device is not named `wlan0`, use the name shown by `device list`.
 Ethernet can skip the `iwctl` steps if networking already works.
 
+### Archinstall
+
 Start the installer:
 
 ```bash
 archinstall
 ```
 
-Then in `archinstall` choose:
+Configure the menu in this order:
 
-- Minimal profile
-- `linux-zen`
-- NetworkManager
-- PipeWire
-- Btrfs with default subvolumes
-- multilib enabled
-- no desktop profile
-- no disk encryption
+1. **Archinstall language** — leave the installer language as wanted.
+2. **Locales**
+   - keyboard layout: select the actual keyboard layout
+   - locale language: `en_US.UTF-8`
+3. **Mirrors and repositories**
+   - under optional repositories enable **only `multilib`**
+   - leave `multilib-testing`, `core-testing`, and `extra-testing` disabled
+4. **Disk configuration**
+   - choose **Use a best-effort default partition layout**
+   - select the internal NVMe (`/dev/nvme0n1` on this laptop), not the Ventoy USB
+   - filesystem: **Btrfs**
+   - use the default Btrfs subvolumes
+   - choose **Use compression**
+   - no disk encryption
+   - no LVM
+   - do not configure snapshots here; Snapper/Btrfs Assistant can be added later
+5. **Swap**
+   - **Swap on ZRAM: No** — this repo installs and configures ZRAM later
+6. **Bootloader**
+   - **systemd-boot**
+   - leave Unified Kernel Images disabled
+   - do not enable Limine
+7. **Kernels**
+   - select **only `linux-zen`**
+8. **Hostname**
+   - leave the default or set a preferred hostname
+9. **Authentication**
+   - create a normal user
+   - give the user sudo/superuser privileges
+   - root password can remain unset
+   - leave U2F login setup unchanged unless intentionally using a hardware security key
+10. **Profile**
+    - select **Minimal**
+11. **Applications**
+    - leave empty; the repo installs the desktop/application stack later
+12. **Network configuration**
+    - select **NetworkManager**
+    - choose **Default backend**, not the iwd backend
+13. **Pacman**
+    - the current Archinstall Pacman submenu only needs its normal defaults; `Color = True` is fine
+    - `multilib` is configured earlier under **Mirrors and repositories**, not here
+14. **Additional packages**
+    - leave empty unless something is specifically needed during the first boot
+15. **Timezone**
+    - set the local timezone
+16. **Automatic time sync (NTP)**
+    - enable it
+
+The repo bootstrap will install/configure PipeWire, ZRAM, networking services,
+Niri/Noctalia and the rest of the system after the base Arch install.
 
 ## 2. Bootstrap
 
