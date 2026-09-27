@@ -38,9 +38,7 @@ secrets.
 
 Current intent:
 
-- dark mode
 - wallpaper-derived colors
-- Ayu built-in palette base
 - M3 tonal-spot wallpaper scheme
 - application icons colorized
 - greeter sync enabled
