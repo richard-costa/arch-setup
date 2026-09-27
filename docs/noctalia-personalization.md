@@ -35,7 +35,8 @@ The hook refreshes Yazi when Noctalia changes its generated palette.
 The seed configures:
 
 - wallpaper-derived colors with the M3 tonal-spot scheme
-- colorized application icons
+- Noctalia interface font `Noto Sans`
+- colorized application icons using `on_surface_variant`
 - wallpaper directory `~/Pictures/Wallpapers`
 - wallpaper fill mode `fit` with `shadow` as the uncovered-area fill color
 - wallpaper rotation every 600 seconds / 10 minutes
@@ -47,10 +48,28 @@ The seed configures:
 - automatic location by IP
 - automatic greeter appearance sync
 
-Noctalia exposes application-icon tinting in **Settings → Appearance → Interface → Colorize App Icons**.
+Noctalia exposes the relevant interface settings under **Settings → Appearance → Interface**.
 
 The seed intentionally does not store the currently selected wallpaper,
 per-monitor wallpaper choices, lockscreen geometry, runtime state, or secrets.
+
+## Fonts
+
+The workstation uses two coordinated font roles:
+
+```text
+Noctalia / GTK / Qt UI   Noto Sans 11
+Kitty / terminal apps    MesloLGS Nerd Font Mono 11
+```
+
+`install/dotfiles.sh` applies `Noto Sans 11` to GTK/GNOME interface and document
+fonts and `MesloLGS Nerd Font Mono 11` to the GTK monospace preference. Kitty
+tracks the same Meslo font directly in its dotfile. The Noctalia first-install
+seed selects `Noto Sans` for shell UI.
+
+For Qt, `defaults/qt6ct.conf` seeds those same font choices only when
+`~/.config/qt6ct/qt6ct.conf` does not already exist. Existing qt6ct preferences
+are never overwritten by the bootstrap.
 
 ## Wallpapers and video wallpapers
 
@@ -68,10 +87,21 @@ normal home-directory copies.
 
 `qt6ct-kde` is installed and Niri exports `QT_QPA_PLATFORMTHEME=qt6ct`.
 Noctalia's KColorScheme template generates the color scheme automatically.
-
-One manual step remains unless qt6ct itself is later made reproducible: run
-`qt6ct`, select **`noctalia (KColorScheme)`** under **Appearance → Color scheme**,
+The bootstrap now seeds the Qt fonts, but one manual appearance step remains:
+run `qt6ct`, select **`noctalia (KColorScheme)`** under **Appearance → Color scheme**,
 and apply it.
+
+## Fastfetch
+
+`defaults/fastfetch-config.jsonc` is copied once to
+`~/.config/fastfetch/config.jsonc`. It stores the selected system-information
+modules and sets one line of top padding on the Arch logo.
+
+Noctalia's Fastfetch community template continues to generate
+`~/.config/fastfetch/themes/noctalia.jsonc` from the active wallpaper palette.
+Its hook merges the generated logo/display colors into the main Fastfetch
+configuration. `jq` is installed because that hook uses it. Existing
+`config.jsonc` files are left untouched by later bootstrap runs.
 
 ## Generated theme files
 
@@ -80,9 +110,10 @@ Noctalia owns generated colors. Examples include:
 ```text
 ~/.config/niri/noctalia.kdl
 ~/.config/kitty/themes/noctalia.conf
+~/.config/fastfetch/themes/noctalia.jsonc
 ```
 
-These are not committed.
+These generated files are not committed.
 
 ## Lockscreen widgets
 
