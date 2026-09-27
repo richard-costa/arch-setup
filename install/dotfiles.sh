@@ -15,7 +15,7 @@ fi
 
 cd "$ROOT/dotfiles"
 
-stow --restow --no-folding --target="$HOME" niri fish kitty noctalia yazi
+stow --restow --no-folding --target="$HOME" niri fish kitty noctalia yazi pipewire
 
 # Nautilus and other GTK apps read these appearance settings from GNOME
 # interface preferences. The bootstrap normally runs from a TTY, so create a
@@ -77,7 +77,7 @@ if [[ ! -e "$NOCTALIA_SETTINGS" ]]; then
     mv "$tmp_settings" "$NOCTALIA_SETTINGS"
     echo "Seeded initial Noctalia settings."
 else
-    echo "Existing Noctalia settings found; leaving them unchanged."
+    echo "Existing Noctalia settings found; leaving it unchanged."
 fi
 
 # Noctalia generates these after login/theme changes. Empty placeholders keep
