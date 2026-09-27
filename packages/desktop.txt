@@ -7,6 +7,7 @@ xwayland-satellite
 # xdg-terminal-exec lets GUI apps such as Nautilus launch terminal apps like
 # Micro through the user's preferred terminal.
 xdg-desktop-portal-gnome
+xdg-desktop-portal-gtk
 xdg-utils
 xdg-terminal-exec
 
@@ -64,6 +65,8 @@ ttf-meslo-nerd
 
 # Shell / terminal conveniences
 fish
+fish-pure-prompt
+fish-autopair
 fzf
 eza
 bat
