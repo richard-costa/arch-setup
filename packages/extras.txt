@@ -31,6 +31,10 @@ btrfs-assistant
 snapper
 snap-pac
 
+# Optional PDF tooling
+# MuPDF command-line tools (including mutool). This pulls Tesseract/OCR data.
+mupdf-tools
+
 # Shell convenience
 # tldr <command> gives shorter examples than a full man page.
 tealdeer
