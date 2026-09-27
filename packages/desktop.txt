@@ -56,6 +56,8 @@ unzip
 unrar
 
 # Fonts
+# Noto Sans is the desktop/UI font. Meslo Nerd Font Mono is used in Kitty and
+# for explicit monospace preferences.
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
@@ -73,6 +75,8 @@ bat
 micro
 btop
 fastfetch
+# Noctalia's Fastfetch template uses jq to merge generated palette colors.
+jq
 ripgrep
 curl
 wget
