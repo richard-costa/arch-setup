@@ -36,6 +36,7 @@ community_ids = [ "pywalfox", "obsidian", "vscode", "fastfetch", "yazi" ]
 [wallpaper]
 directory = "@HOME@/Pictures/Wallpapers"
 fill_mode = "fit"
+fill_color = "shadow"
 
 [wallpaper.automation]
 enabled = true
