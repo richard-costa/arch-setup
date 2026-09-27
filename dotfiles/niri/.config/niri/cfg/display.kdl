@@ -1,0 +1,5 @@
+// Optional monitor-specific output configuration.
+//
+// This file is intentionally comment-only so Niri can auto-configure connected
+// displays. Add output blocks here later if a fixed mode, scale, transform or
+// position is needed for a particular monitor setup.
