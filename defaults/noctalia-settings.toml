@@ -18,7 +18,9 @@ enabled = [ "noctalia/mpvpaper" ]
 video_directory = "@HOME@/Videos"
 
 [shell]
+font_family = "Noto Sans"
 app_icon_colorize = true
+app_icon_color = "on_surface_variant"
 
 [shell.greeter_sync]
 auto_sync = true
