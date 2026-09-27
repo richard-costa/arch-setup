@@ -180,9 +180,6 @@ Rebuild the unified kernel image:
 mkinitcpio -P
 ```
 
-The command should finish successfully and rebuild the `linux-zen` UKI under
-`/boot/EFI/Linux/`.
-
 Then leave the chroot and reboot:
 
 ```bash
@@ -190,50 +187,24 @@ exit
 reboot
 ```
 
-If the machine returns to the Ventoy menu because the USB is still inserted,
-press **Ctrl+Alt+Delete** from the Ventoy menu to reboot. As soon as the screen
-goes black/restarts, unplug the Ventoy USB so the machine boots from the internal
-NVMe. Do not unplug the USB while an operating system is actively writing to it.
-
-After booting the installed system, verify the parameter one more time:
+After booting the installed system, verify the parameter again:
 
 ```bash
 cat /proc/cmdline
 ```
 
-The output should contain:
-
-```text
-nvme_core.default_ps_max_latency_us=5500
-```
-
 ### First boot: connect Wi-Fi
 
-The installed system uses NetworkManager. Check the device state:
+The installed system uses NetworkManager:
 
 ```bash
 nmcli device status
-```
-
-On this laptop the Wi-Fi interface is `wlp2s0`. List available networks and
-connect to the wanted SSID:
-
-```bash
 nmcli device wifi list
-nmcli --ask device wifi connect "YOUR_WIFI_NAME" ifname wlp2s0
+nmcli --ask device wifi connect "YOUR_WIFI_NAME"
 ```
 
-Enter the Wi-Fi password when prompted, then verify connectivity:
-
-```bash
-ping -c 3 archlinux.org
-```
-
-If the Wi-Fi interface name differs, use the Wi-Fi device shown by
-`nmcli device status`.
-
-The repo bootstrap will install/configure PipeWire, ZRAM, networking services,
-Niri/Noctalia and the rest of the system after the base Arch install.
+Use the interface shown by `nmcli device status` if an explicit interface is
+needed.
 
 ## 2. Bootstrap
 
@@ -246,9 +217,10 @@ cd arch-setup
 bash install.sh
 ```
 
-The bootstrap installs the core system/desktop packages, builds `yay` if needed,
-installs and configures Noctalia Greeter, configures ZRAM/DNS/services, and
-links the dotfiles.
+The bootstrap installs the system/desktop packages, bootstraps `yay`, installs
+and configures Noctalia Greeter, configures system services, copies wallpaper
+collections, deploys dotfiles, and seeds Noctalia's first-run GUI preferences.
+An existing Noctalia `settings.toml` is never overwritten.
 
 Optional utilities, diagnostics, Btrfs Assistant and Snapper:
 
@@ -256,8 +228,7 @@ Optional utilities, diagnostics, Btrfs Assistant and Snapper:
 bash install/extras.sh
 ```
 
-This optional set includes Tailscale. Its service is enabled automatically;
-authenticate this machine with your Tailscale account after installation:
+This optional set includes Tailscale. Authenticate it when wanted:
 
 ```bash
 sudo tailscale up
@@ -268,30 +239,22 @@ sudo tailscale up
 The bootstrap configures `/etc/greetd/config.toml`, creates the dedicated
 `greeter` system account when needed, and enables `greetd.service`.
 
-It also configures NetworkManager to use `systemd-resolved` and links
-`/etc/resolv.conf` to its local DNS stub. This preserves DNS handling for
-ordinary networks and Tailscale's private DNS routes.
+NetworkManager is configured to use `systemd-resolved`, with `/etc/resolv.conf`
+pointing at the local DNS stub.
 
-## 4. Personal setup
+## 4. Remaining manual setup
 
-After logging in:
+Most Noctalia appearance setup is reproduced automatically. Remaining manual
+steps are limited to things that are external to Noctalia or intentionally
+machine/user specific:
 
-- configure Noctalia from its GUI
-- copy the repo wallpapers into `~/Pictures/Wallpapers` and video wallpapers into `~/Videos`
-- enable the wanted Noctalia templates, including **KColorScheme** for Qt applications
-- install the KDE-patched qt6ct build used by Noctalia:
-
-  ```bash
-  yay -S qt6ct-kde
-  ```
-
-  If prompted, allow it to replace the regular `qt6ct` package.
-
-- run `qt6ct`, choose **`noctalia (KColorScheme)`** under **Appearance → Color scheme**, and apply it
-- use **Btrfs Assistant** if snapshots are wanted
+- run `qt6ct`, select **`noctalia (KColorScheme)`** under **Appearance → Color scheme**, and apply it
+- install browser extensions such as Pywalfox / PWAsForFirefox when needed
 - install/configure the remembered VS Code extensions
+- use **Btrfs Assistant** if snapshots are wanted
+- enter any plugin/app secrets manually
 
-Notes:
+Details:
 
 - [Noctalia personalization](docs/noctalia-personalization.md)
 - [Application setup](docs/apps.md)
@@ -303,11 +266,12 @@ Notes:
 
 ```text
 packages/   package lists
-install/    small scripts used by install.sh
-dotfiles/   Niri, Fish and Kitty config
+defaults/   first-install application preference seeds
+install/    bootstrap scripts
+dotfiles/   tracked user configuration
 system/     files installed under /etc
-docs/       short personal setup notes
-scripts/    temporary migration/debugging helpers
+docs/       setup notes
+scripts/    migration/debugging helpers
 ```
 
 Generated theme files, secrets, keyrings and runtime state are not stored in Git.
