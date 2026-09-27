@@ -71,14 +71,17 @@ Configure the menu in this order:
 
 1. **Archinstall language** — leave the installer language as wanted.
 2. **Locales**
-   - keyboard layout: select the actual keyboard layout
+   - keyboard layout: `br-abnt2`
    - locale language: `en_US.UTF-8`
+   - locale encoding: `UTF-8`
 3. **Mirrors and repositories**
+   - mirror region: **Brazil**
    - under optional repositories enable **only `multilib`**
    - leave `multilib-testing`, `core-testing`, and `extra-testing` disabled
 4. **Disk configuration**
    - choose **Use a best-effort default partition layout**
-   - select the internal NVMe (`/dev/nvme0n1` on this laptop), not the Ventoy USB
+   - select the internal NVMe: `/dev/nvme0n1`
+   - do **not** select the Ventoy USB
    - filesystem: **Btrfs**
    - use the default Btrfs subvolumes
    - choose **Use compression**
@@ -89,14 +92,14 @@ Configure the menu in this order:
    - **Swap on ZRAM: No** — this repo installs and configures ZRAM later
 6. **Bootloader**
    - **systemd-boot**
-   - leave Unified Kernel Images disabled
+   - keep the current **Unified Kernel Image (UKI)** setting enabled
    - do not enable Limine
 7. **Kernels**
    - select **only `linux-zen`**
 8. **Hostname**
-   - leave the default or set a preferred hostname
+   - `archlinux`
 9. **Authentication**
-   - create a normal user
+   - create one normal user
    - give the user sudo/superuser privileges
    - root password can remain unset
    - leave U2F login setup unchanged unless intentionally using a hardware security key
@@ -108,14 +111,45 @@ Configure the menu in this order:
     - select **NetworkManager**
     - choose **Default backend**, not the iwd backend
 13. **Pacman**
-    - the current Archinstall Pacman submenu only needs its normal defaults; `Color = True` is fine
+    - leave **Color** enabled
     - `multilib` is configured earlier under **Mirrors and repositories**, not here
 14. **Additional packages**
-    - leave empty unless something is specifically needed during the first boot
+    - leave empty
 15. **Timezone**
-    - set the local timezone
+    - `America/Sao_Paulo`
 16. **Automatic time sync (NTP)**
-    - enable it
+    - **Yes**
+
+### Expected final Archinstall summary
+
+Before selecting **Install**, the summary should look like this:
+
+```text
+Hostname                    : archlinux
+Kernels                     : linux-zen
+Automatic Time Sync (NTP)   : Yes
+Timezone                    : America/Sao_Paulo
+Pacman                      : Color enabled
+Mirrors and Repositories    : Mirror regions "Brazil"
+                              Optional repositories "multilib"
+Bootloader                  : Bootloader "Systemd-boot"
+                              UKI enabled
+Disk Configuration          : Default layout
+                              Devices /dev/nvme0n1
+Authentication              : Configured 1 user(s)
+Locales                     : Keyboard layout "br-abnt2"
+                              Locale language "en_US.UTF-8"
+                              Locale encoding "UTF-8"
+                              Console font "default8x16"
+Profile                     : Minimal
+Network                     : Use Network Manager (default backend)
+```
+
+There should be no desktop profile, no additional packages, no disk encryption,
+and no Archinstall-managed ZRAM swap.
+
+Because UKI is enabled, the persistent NVMe kernel parameter should later be
+added to `/etc/kernel/cmdline`; see the troubleshooting guide.
 
 The repo bootstrap will install/configure PipeWire, ZRAM, networking services,
 Niri/Noctalia and the rest of the system after the base Arch install.
