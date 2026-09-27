@@ -95,12 +95,14 @@ and apply it.
 
 `defaults/fastfetch-config.jsonc` is copied once to
 `~/.config/fastfetch/config.jsonc`. It stores the selected system-information
-modules and sets one line of top padding on the Arch logo.
+modules, adds one blank line before the text, and sets one line of top padding
+on the Arch logo so both columns have matching vertical spacing.
 
-Noctalia's Fastfetch community template continues to generate
-`~/.config/fastfetch/themes/noctalia.jsonc` from the active wallpaper palette.
-Its hook merges the generated logo/display colors into the main Fastfetch
-configuration. `jq` is installed because that hook uses it. Existing
+The config intentionally does not hard-code Fastfetch colors. Noctalia's
+Fastfetch community template remains responsible for the active palette.
+It generates `~/.config/fastfetch/themes/noctalia.jsonc` from the wallpaper
+colors and its hook merges the generated logo/display colors into the main
+Fastfetch configuration. `jq` is installed because that hook uses it. Existing
 `config.jsonc` files are left untouched by later bootstrap runs.
 
 ## Generated theme files
