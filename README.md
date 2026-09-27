@@ -219,8 +219,18 @@ bash install.sh
 
 The bootstrap installs the system/desktop packages, bootstraps `yay`, installs
 and configures Noctalia Greeter, configures system services, copies wallpaper
-collections, deploys dotfiles, and seeds Noctalia's first-run GUI preferences.
-An existing Noctalia `settings.toml` is never overwritten.
+collections, deploys dotfiles, and seeds first-run application preferences.
+
+The reproducible appearance baseline includes:
+
+- `Noto Sans 11` for GTK/Qt desktop UI and `Noto Sans` for Noctalia
+- `MesloLGS Nerd Font Mono 11` for Kitty and terminal applications
+- Fastfetch's selected module list plus one line of top logo padding
+- Noctalia wallpaper palette generation for GTK, Qt/KColorScheme, Kitty, Niri,
+  Fastfetch, Yazi and other enabled templates
+
+Existing Noctalia, qt6ct and Fastfetch configuration files are not overwritten
+by later bootstrap runs.
 
 Optional utilities, diagnostics, Btrfs Assistant and Snapper:
 
@@ -244,11 +254,11 @@ pointing at the local DNS stub.
 
 ## 4. Remaining manual setup
 
-Most Noctalia appearance setup is reproduced automatically. Remaining manual
-steps are limited to things that are external to Noctalia or intentionally
-machine/user specific:
+Most appearance setup is reproduced automatically. Remaining manual steps are
+limited to things that are external to Noctalia or intentionally
+machine/user-specific:
 
-- run `qt6ct`, select **`noctalia (KColorScheme)`** under **Appearance → Color scheme**, and apply it
+- run `qt6ct`, select **`noctalia (KColorScheme)`** under **Appearance → Color scheme**, and apply it; the Qt font is already seeded as `Noto Sans 11`
 - install browser extensions such as Pywalfox / PWAsForFirefox when needed
 - install/configure the remembered VS Code extensions
 - use **Btrfs Assistant** if snapshots are wanted
