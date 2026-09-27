@@ -122,6 +122,8 @@ kitty
 # The KDE-patched qt6ct build required for Noctalia KColorScheme support is
 # installed from the AUR as qt6ct-kde.
 # Capitaine is referenced directly by the Niri cursor config.
+# Breeze Dark is the GTK icon theme set by install/dotfiles.sh.
 capitaine-cursors
+breeze-icons
 adw-gtk-theme
 nwg-look
