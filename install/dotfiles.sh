@@ -33,6 +33,25 @@ else
     dbus-run-session -- bash -c "$(declare -f set_gsettings); set_gsettings"
 fi
 
+# Seed Noctalia's GUI-managed preferences only on the first install. The copied
+# settings.toml is deliberately not a symlink: after this point Noctalia owns it
+# and can rewrite it normally when settings are changed in the GUI.
+NOCTALIA_STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/noctalia"
+NOCTALIA_SETTINGS="$NOCTALIA_STATE_DIR/settings.toml"
+NOCTALIA_SEED="$ROOT/defaults/noctalia-settings.toml"
+
+if [[ ! -e "$NOCTALIA_SETTINGS" ]]; then
+    mkdir -p "$NOCTALIA_STATE_DIR"
+    escaped_home="$(printf '%s' "$HOME" | sed 's/[\/&]/\\&/g')"
+    tmp_settings="$(mktemp "$NOCTALIA_STATE_DIR/settings.toml.XXXXXX")"
+    sed "s/@HOME@/$escaped_home/g" "$NOCTALIA_SEED" > "$tmp_settings"
+    chmod 600 "$tmp_settings"
+    mv "$tmp_settings" "$NOCTALIA_SETTINGS"
+    echo "Seeded initial Noctalia settings."
+else
+    echo "Existing Noctalia settings found; leaving them unchanged."
+fi
+
 # Noctalia generates these after login/theme changes. Empty placeholders keep
 # Niri and Kitty happy before the first generated palette exists.
 mkdir -p "$HOME/.config/niri" "$HOME/.config/kitty/themes"
