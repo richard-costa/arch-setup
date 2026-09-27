@@ -96,7 +96,6 @@ poppler
 qpdf
 img2pdf
 imagemagick
-mupdf-tools
 ebook-tools
 kdegraphics-mobipocket
 xournalpp
