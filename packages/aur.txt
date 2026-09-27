@@ -4,6 +4,9 @@ noctalia-greeter
 # Noctalia mpvpaper widget/plugin
 mpvpaper
 
+# KDE-patched qt6ct build required for Noctalia KColorScheme support
+qt6ct-kde
+
 # Personal applications not shipped in the official Arch repositories
 onlyoffice-bin
 visual-studio-code-bin
