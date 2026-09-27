@@ -24,9 +24,14 @@ bash "$ROOT/install/system.sh"
 # Enable networking, Bluetooth, TRIM, firewall/timers when installed, and NTP.
 bash "$ROOT/install/services.sh"
 
-# Link portable user configuration.
+# Link portable user configuration before making Fish the login shell so the
+# first Fish login already has the tracked configuration available.
 bash "$ROOT/install/dotfiles.sh"
+
+# Fish is installed by install/desktop.sh. Make it the login shell only after
+# its configuration has been deployed; the change takes effect next login.
+bash "$ROOT/install/shell.sh"
 
 echo
 echo "Core workstation setup finished."
-echo "Reboot to start the Noctalia Greeter."
+echo "Reboot or log out to start the Noctalia Greeter and Fish login shell."
