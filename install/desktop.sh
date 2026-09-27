@@ -12,7 +12,13 @@ if ! grep -Eq '^[[:space:]]*\[multilib\][[:space:]]*$' /etc/pacman.conf; then
   exit 1
 fi
 
-install_manifest "$ROOT/packages/desktop.txt"
+# Prefer these concrete providers for virtual dependencies. install_manifest
+# checks each name first; if Arch renames/removes one, it is omitted and pacman
+# falls back to its normal interactive provider prompt instead of aborting.
+install_manifest "$ROOT/packages/desktop.txt" \
+  pipewire-jack \
+  qt6-multimedia-ffmpeg \
+  tesseract-data-eng
 
 # Fish is installed here, but changing the login shell is intentionally left
 # as an explicit user action rather than silently modifying the account.
