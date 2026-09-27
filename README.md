@@ -15,9 +15,55 @@ nvme_core.default_ps_max_latency_us=5500
 Before the Arch installer starts, select the Arch install entry in the boot menu,
 press `e`, append the parameter to the kernel command line, and press Enter.
 
+After booting the live ISO, verify that it was applied:
+
+```bash
+cat /proc/cmdline
+```
+
+The output should contain `nvme_core.default_ps_max_latency_us=5500`.
+
 After Arch is installed, make the same parameter persistent in the installed
 bootloader before relying on normal boots. See
 [troubleshooting](docs/troubleshooting.md#nvme-boot-parameter).
+
+### Connect the live ISO to Wi-Fi
+
+`archinstall` needs a working internet connection first. For Wi-Fi, run:
+
+```bash
+iwctl
+```
+
+Then inside `iwctl`:
+
+```text
+device list
+station wlan0 scan
+station wlan0 get-networks
+station wlan0 connect "YOUR_WIFI_NAME"
+```
+
+Enter the Wi-Fi password when prompted, then:
+
+```text
+exit
+```
+
+Verify the connection:
+
+```bash
+ping -c 3 archlinux.org
+```
+
+If the Wi-Fi device is not named `wlan0`, use the name shown by `device list`.
+Ethernet can skip the `iwctl` steps if networking already works.
+
+Start the installer:
+
+```bash
+archinstall
+```
 
 Then in `archinstall` choose:
 
