@@ -148,8 +148,62 @@ Network                     : Use Network Manager (default backend)
 There should be no desktop profile, no additional packages, no disk encryption,
 and no Archinstall-managed ZRAM swap.
 
-Because UKI is enabled, the persistent NVMe kernel parameter should later be
-added to `/etc/kernel/cmdline`; see the troubleshooting guide.
+### Post-install: make the NVMe parameter persistent
+
+When Archinstall finishes, choose:
+
+```text
+chroot into installation for post-installation configurations
+```
+
+Check the current UKI kernel command line:
+
+```bash
+cat /etc/kernel/cmdline
+```
+
+Append the required NVMe parameter while preserving the existing options:
+
+```bash
+echo "$(cat /etc/kernel/cmdline) nvme_core.default_ps_max_latency_us=5500" > /etc/kernel/cmdline
+```
+
+Verify it:
+
+```bash
+cat /etc/kernel/cmdline
+```
+
+Rebuild the unified kernel image:
+
+```bash
+mkinitcpio -P
+```
+
+The command should finish successfully and rebuild the `linux-zen` UKI under
+`/boot/EFI/Linux/`.
+
+Then leave the chroot and reboot:
+
+```bash
+exit
+reboot
+```
+
+Remove the Ventoy USB during the reboot so the machine boots from the internal
+NVMe instead of returning to the Ventoy menu.
+
+After booting the installed system, verify the parameter one more time:
+
+```bash
+cat /proc/cmdline
+```
+
+The output should contain:
+
+```text
+nvme_core.default_ps_max_latency_us=5500
+```
 
 The repo bootstrap will install/configure PipeWire, ZRAM, networking services,
 Niri/Noctalia and the rest of the system after the base Arch install.
