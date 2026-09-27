@@ -25,12 +25,40 @@ set_gsettings() {
     gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
     gsettings set org.gnome.desktop.interface cursor-theme 'capitaine-cursors'
     gsettings set org.gnome.desktop.interface icon-theme 'breeze-dark'
+    gsettings set org.gnome.desktop.interface font-name 'Noto Sans 11'
+    gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 11'
+    gsettings set org.gnome.desktop.interface monospace-font-name 'MesloLGS Nerd Font Mono 11'
 }
 
 if [[ -n "${DBUS_SESSION_BUS_ADDRESS:-}" ]]; then
     set_gsettings
 else
     dbus-run-session -- bash -c "$(declare -f set_gsettings); set_gsettings"
+fi
+
+# Seed qt6ct fonts only when there is no existing qt6ct configuration. The
+# Noctalia KColorScheme itself is selected later in qt6ct and should remain
+# user-editable after first boot.
+QT6CT_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/qt6ct"
+QT6CT_CONFIG="$QT6CT_DIR/qt6ct.conf"
+if [[ ! -e "$QT6CT_CONFIG" ]]; then
+    mkdir -p "$QT6CT_DIR"
+    cp "$ROOT/defaults/qt6ct.conf" "$QT6CT_CONFIG"
+    echo "Seeded qt6ct font preferences."
+else
+    echo "Existing qt6ct config found; leaving it unchanged."
+fi
+
+# Fastfetch needs a real config.jsonc for its module list and for Noctalia's
+# generated palette hook. Seed it once; Noctalia can later merge colors into it.
+FASTFETCH_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch"
+FASTFETCH_CONFIG="$FASTFETCH_DIR/config.jsonc"
+if [[ ! -e "$FASTFETCH_CONFIG" ]]; then
+    mkdir -p "$FASTFETCH_DIR"
+    cp "$ROOT/defaults/fastfetch-config.jsonc" "$FASTFETCH_CONFIG"
+    echo "Seeded Fastfetch configuration."
+else
+    echo "Existing Fastfetch config found; leaving it unchanged."
 fi
 
 # Seed Noctalia's GUI-managed preferences only on the first install. The copied
