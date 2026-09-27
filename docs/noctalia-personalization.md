@@ -1,9 +1,7 @@
 # Noctalia personalization
 
-Noctalia is intentionally managed through its GUI rather than by install scripts.
-
-The repository documents the desired setup, but does **not** try to overwrite
-Noctalia's runtime settings automatically.
+Noctalia is seeded automatically on the first install so the normal workstation
+appearance does not need to be rebuilt manually in the GUI.
 
 ## Where settings live
 
@@ -11,13 +9,17 @@ Noctalia's runtime settings automatically.
 - GUI-managed settings: `~/.local/state/noctalia/settings.toml`
 - Runtime/internal state: `~/.local/state/noctalia/state.toml`
 
-Do not commit `settings.toml` or `state.toml` directly. They can contain
-machine-specific state and plugin secrets.
+The repository does not track the live `settings.toml` or `state.toml` directly.
+Instead, `defaults/noctalia-settings.toml` is copied to `settings.toml` only when
+that file does not already exist. After the copy, Noctalia owns the file and GUI
+changes work normally.
+
+The bootstrap never overwrites an existing `settings.toml`.
 
 ## Stable config
 
-These settings are tracked in `dotfiles/noctalia/` and deployed to
-`~/.config/noctalia/config.toml` by the bootstrap:
+These integration settings are tracked in `dotfiles/noctalia/` and deployed to
+`~/.config/noctalia/config.toml`:
 
 ```toml
 [shell]
@@ -30,27 +32,31 @@ colors_changed = "ya emit-to 0 app:theme"
 The color-change hook tells Yazi to refresh its theme whenever Noctalia changes
 the wallpaper-derived palette.
 
-`dotfiles/yazi/.config/yazi/theme.toml` selects Noctalia's generated Yazi
-theme. Neither file contains runtime state, generated colors, location data, or
-secrets.
+`dotfiles/yazi/.config/yazi/theme.toml` selects Noctalia's generated Yazi theme.
 
-## Theme
+## First-install Noctalia seed
 
-Current intent:
+The first-install seed configures:
 
 - wallpaper-derived colors
 - M3 tonal-spot wallpaper scheme
-- application icons colorized
-- greeter sync enabled
+- colorized application icons
+- built-in GTK 3, GTK 4, KColorScheme, Kitty, Niri and Btop templates
+- community Pywalfox, Obsidian, VS Code, Fastfetch and Yazi templates
+- wallpaper directory `~/Pictures/Wallpapers`
+- wallpaper automation every 600 seconds / 10 minutes
+- default bar layout
+- official `noctalia/mpvpaper` plugin and bar widget
+- mpvpaper video directory `~/Videos`
+- automatic location by IP
+- automatic greeter appearance sync
 
-Noctalia is the source of truth for colors. Do not commit generated palette
-files.
+The seed intentionally does not store the currently selected wallpaper,
+per-monitor wallpaper choices, lockscreen geometry, runtime state, or secrets.
 
 ## Templates
 
-Keep these enabled:
-
-### Built-in
+Built-in:
 
 - GTK 3
 - GTK 4
@@ -59,7 +65,7 @@ Keep these enabled:
 - Niri
 - Btop
 
-### Community
+Community:
 
 - Pywalfox
 - Obsidian
@@ -69,11 +75,12 @@ Keep these enabled:
 
 The Alacritty and Cava templates are not needed for this workstation.
 
-For Qt applications, run `qt6ct` once after installation, choose the
-`noctalia (KColorScheme)` color scheme, and apply it. Niri exports
-`QT_QPA_PLATFORMTHEME=qt6ct`.
+For Qt applications, `qt6ct-kde` is installed and Niri exports
+`QT_QPA_PLATFORMTHEME=qt6ct`. The KColorScheme template generates the Noctalia
+scheme, but qt6ct still needs to select `noctalia (KColorScheme)` once unless its
+own config is later made reproducible too.
 
-Noctalia writes generated colors outside the repository. The tracked configs only contain the stable integration points:
+Noctalia writes generated colors outside the repository. The tracked configs only contain stable integration points:
 
 - Niri includes `noctalia.kdl`
 - Kitty includes `themes/noctalia.conf`
@@ -94,41 +101,17 @@ wallpapers/        static wallpapers
 video-wallpapers/  mpvpaper/video wallpapers
 ```
 
-On a fresh install, copy them into the normal user media folders:
-
-```bash
-mkdir -p "$HOME/Pictures/Wallpapers" "$HOME/Videos"
-
-rsync -a wallpapers/ "$HOME/Pictures/Wallpapers/"
-rsync -a video-wallpapers/ "$HOME/Videos/"
-```
-
-Using copies is intentional: the Git repository remains the curated/shareable
-source collection, while Noctalia and mpvpaper use the normal home-directory
-locations independently of where the repository was cloned.
-
-Noctalia wallpaper directory:
+`install/media.sh` copies them into:
 
 ```text
 ~/Pictures/Wallpapers
-```
-
-mpvpaper/video wallpaper directory:
-
-```text
 ~/Videos
 ```
 
-Wallpaper automation:
+Using copies is intentional: the Git repository remains the curated/shareable
+source collection while Noctalia and mpvpaper use normal home-directory paths.
 
-- enabled
-- rotate every 600 seconds / 10 minutes
-- theme source follows the wallpaper
-
-The exact current/last wallpaper is runtime state and is not documented as a
-fixed choice.
-
-
+The exact current/last wallpaper is runtime state and is not fixed by the seed.
 
 ## Bar
 
@@ -139,20 +122,17 @@ start:  launcher, workspaces
 center: wallpaper, mpvpaper, clock
 ```
 
-Settings -> Widget List and move around.
-Also  -> `+Add Widget` and search for video wallpaper.
-
 ## Plugins
 
 Currently enabled:
 
 - `noctalia/mpvpaper`
 
-Settings -> plugins -> official -> video wallpapers.
+Its video directory defaults to `~/Videos`.
 
 ## Location
 
-Settings -> Location -> enable `Auto-Locate (IP)`
+Automatic location by IP is enabled by the first-install seed.
 
 ## Lockscreen widgets
 
@@ -161,15 +141,12 @@ Custom lockscreen-widget configuration currently exists for both:
 - `eDP-1`
 - `HDMI-A-1`
 
-The feature is currently disabled.
-
-These placements are monitor-specific and should be adjusted through Noctalia's
-GUI if the monitor arrangement changes rather than being automated by this
-repository.
+The feature is currently disabled. These placements are monitor-specific and
+are not reproduced automatically.
 
 ## Greeter sync
 
-In Noctalia Settings → Security → Greeter, enable automatic sync.
+Automatic appearance sync is enabled by the first-install seed.
 
 To allow appearance-only greeter sync without repeated sudo prompts:
 
@@ -180,18 +157,20 @@ sudo noctalia-greeter passwordless-sync enable "$USER"
 This creates the dedicated Polkit permission supported by Noctalia Greeter; it
 does not grant general passwordless sudo access.
 
-## After a fresh install
+## Re-applying the seed manually
 
-Open Noctalia Settings and verify:
+The normal installer seeds Noctalia only when
+`~/.local/state/noctalia/settings.toml` does not exist.
 
-1. wallpaper copies, directories and automatic rotation
-2. Niri / Kitty / GTK / KColorScheme templates
-3. community templates used by installed applications
-4. bar widget layout
-5. mpvpaper plugin
-6. greeter sync
-7. automatic location
-8. any plugin secrets entered manually
+To deliberately replace the current GUI settings with the repository seed,
+back up the current file first, then rerun the dotfile installer:
 
-The repository should document intent; Noctalia should remain responsible for
-its own generated state and colors.
+```bash
+mkdir -p ~/.local/state/noctalia
+mv ~/.local/state/noctalia/settings.toml \
+   ~/.local/state/noctalia/settings.toml.backup 2>/dev/null || true
+bash install/dotfiles.sh
+```
+
+Afterward, log out/in or restart Noctalia so all templates and plugin state are
+applied.
