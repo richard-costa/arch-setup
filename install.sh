@@ -32,6 +32,10 @@ bash "$ROOT/install/media.sh"
 # preferences before making Fish the login shell.
 bash "$ROOT/install/dotfiles.sh"
 
+# Reload PipeWire after its RNNoise configuration is linked and persist the
+# generated Clean Microphone source as the default input.
+bash "$ROOT/install/audio.sh"
+
 # Fish is installed by install/desktop.sh. Make it the login shell only after
 # its configuration has been deployed; the change takes effect next login.
 bash "$ROOT/install/shell.sh"
