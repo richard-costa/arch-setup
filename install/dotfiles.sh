@@ -17,13 +17,20 @@ cd "$ROOT/dotfiles"
 
 stow --restow --no-folding --target="$HOME" niri fish kitty noctalia yazi
 
-# Nautilus and other GTK apps read the icon theme from GNOME interface
-# settings. The bootstrap normally runs from a TTY, so create a temporary
-# D-Bus session when there is no existing graphical session bus.
-if [[ -n "${DBUS_SESSION_BUS_ADDRESS:-}" ]]; then
+# Nautilus and other GTK apps read these appearance settings from GNOME
+# interface preferences. The bootstrap normally runs from a TTY, so create a
+# temporary D-Bus session when there is no existing graphical session bus.
+set_gsettings() {
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+    gsettings set org.gnome.desktop.interface cursor-theme 'capitaine-cursors'
     gsettings set org.gnome.desktop.interface icon-theme 'breeze-dark'
+}
+
+if [[ -n "${DBUS_SESSION_BUS_ADDRESS:-}" ]]; then
+    set_gsettings
 else
-    dbus-run-session -- gsettings set org.gnome.desktop.interface icon-theme 'breeze-dark'
+    dbus-run-session -- bash -c "$(declare -f set_gsettings); set_gsettings"
 fi
 
 # Noctalia generates these after login/theme changes. Empty placeholders keep
