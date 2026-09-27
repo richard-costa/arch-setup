@@ -190,8 +190,10 @@ exit
 reboot
 ```
 
-Remove the Ventoy USB during the reboot so the machine boots from the internal
-NVMe instead of returning to the Ventoy menu.
+If the machine returns to the Ventoy menu because the USB is still inserted,
+press **Ctrl+Alt+Delete** from the Ventoy menu to reboot. As soon as the screen
+goes black/restarts, unplug the Ventoy USB so the machine boots from the internal
+NVMe. Do not unplug the USB while an operating system is actively writing to it.
 
 After booting the installed system, verify the parameter one more time:
 
