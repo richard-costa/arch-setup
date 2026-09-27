@@ -128,14 +128,7 @@ Wallpaper automation:
 The exact current/last wallpaper is runtime state and is not documented as a
 fixed choice.
 
-### Large media in Git
 
-The wallpaper collections are intentionally tracked in Git so they can be
-shared and restored with the rest of the workstation setup.
-
-GitHub warns about files larger than 50 MB and rejects normal Git blobs larger
-than 100 MB. If an individual future video exceeds that limit, use Git LFS for
-that media rather than changing the normal wallpaper workflow.
 
 ## Bar
 
@@ -146,25 +139,20 @@ start:  launcher, workspaces
 center: wallpaper, mpvpaper, clock
 ```
 
+Settings -> Widget List and move around.
+Also  -> `+Add Widget` and search for video wallpaper.
+
 ## Plugins
 
 Currently enabled:
 
 - `noctalia/mpvpaper`
 
-Wallhaven is configured but its API key is a secret. Never place that key in
-Git, documentation, dotfiles, screenshots, or shell history intended for
-sharing.
-
-If the Wallhaven plugin is used again, configure its API key manually through
-Noctalia after installation.
+Settings -> plugins -> official -> video wallpapers.
 
 ## Location
 
-Automatic location detection is enabled.
-
-Because location is personal/machine state, configure this through the GUI
-rather than storing resolved location values in Git.
+Settings -> Location -> enable `Auto-Locate (IP)`
 
 ## Lockscreen widgets
 
