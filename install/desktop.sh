@@ -17,8 +17,7 @@ fi
 # falls back to its normal interactive provider prompt instead of aborting.
 install_manifest "$ROOT/packages/desktop.txt" \
   pipewire-jack \
-  qt6-multimedia-ffmpeg \
-  tesseract-data-eng
+  qt6-multimedia-ffmpeg
 
 # Fish is installed here, but changing the login shell is intentionally left
 # as an explicit user action rather than silently modifying the account.
