@@ -285,3 +285,8 @@ scripts/    migration/debugging helpers
 ```
 
 Generated theme files, secrets, keyrings and runtime state are not stored in Git.
+
+
+## Symlink
+
+Add `~/arch-setup ~/Documents/projects/arch-setup` or to any other path I usually keep git repos.
