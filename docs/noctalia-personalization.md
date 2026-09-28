@@ -92,6 +92,23 @@ The bootstrap seeds the Qt fonts, but one manual appearance step remains:
 run `qt6ct`, select **`noctalia (KColorScheme)`** under **Appearance → Color scheme**,
 and apply it.
 
+## Firefox / Pywalfox
+
+The enabled Pywalfox community template generates Firefox palette data, but it
+does not theme Firefox by itself. Firefox also needs the **Pywalfox extension**
+and Noctalia's native messaging host.
+
+After installing the extension, run:
+
+```bash
+noctalia firefox-theme install
+noctalia firefox-theme update
+```
+
+Restart Firefox after `install`. The native host manifest is written to
+`~/.mozilla/native-messaging-hosts/pywalfox.json`. No separate Python
+`pywalfox` package is required.
+
 ## Fastfetch
 
 `defaults/fastfetch-config.jsonc` is copied once to
