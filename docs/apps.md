@@ -49,11 +49,12 @@ xdg-mime default org.gnome.Loupe.desktop image/webp
 
 ## Default text editor
 
-GNOME Text Editor is the graphical default for plain/empty text files:
+KWrite is the graphical default for plain/empty text files. On Arch it is
+provided by the `kate` package:
 
 ```bash
-gio mime text/plain org.gnome.TextEditor.desktop
-gio mime application/x-zerosize org.gnome.TextEditor.desktop
+gio mime text/plain org.kde.kwrite.desktop
+gio mime application/x-zerosize org.kde.kwrite.desktop
 ```
 
 Micro remains the terminal editor through the Fish `EDITOR` and `VISUAL`

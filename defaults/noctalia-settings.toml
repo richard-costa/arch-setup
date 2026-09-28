@@ -32,7 +32,7 @@ wallpaper_scheme = "m3-tonal-spot"
 [theme.templates]
 enable_builtin_templates = true
 enable_community_templates = true
-builtin_ids = [ "btop", "gtk3", "gtk4", "kcolorscheme", "kitty", "niri" ]
+builtin_ids = [ "btop", "gtk3", "gtk4", "kcolorscheme", "qt", "kitty", "niri" ]
 community_ids = [ "pywalfox", "obsidian", "vscode", "fastfetch", "yazi" ]
 
 [wallpaper]
