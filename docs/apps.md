@@ -23,9 +23,22 @@ desktop environments.
 
 ## Firefox / Noctalia palette
 
-The Noctalia first-install seed enables the community template `pywalfox`.
-Firefox still needs the **Pywalfox** browser extension installed once. No
-separate Python `pywalfox` package is needed.
+The Noctalia first-install seed enables the community template `pywalfox`, but
+the template alone does not apply colors inside Firefox.
+
+Install the **Pywalfox** Firefox extension once, then install Noctalia's native
+messaging host and push the current palette:
+
+```bash
+noctalia firefox-theme install
+noctalia firefox-theme update
+```
+
+Restart Firefox after the native host is installed. The host manifest is written
+to `~/.mozilla/native-messaging-hosts/pywalfox.json` and lets the Pywalfox
+extension communicate with Noctalia.
+
+No separate Python `pywalfox` package is needed.
 
 ## Flatpak / Stremio
 
