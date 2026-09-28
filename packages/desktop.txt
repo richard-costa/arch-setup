@@ -113,7 +113,8 @@ krita
 anki
 spotify-launcher
 flatpak
-gnome-text-editor
+# KWrite is provided by the kate package.
+kate
 apostrophe
 loupe
 obsidian
