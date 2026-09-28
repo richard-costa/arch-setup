@@ -41,7 +41,7 @@ The seed configures:
 - wallpaper fill mode `fit` with `shadow` as the uncovered-area fill color
 - wallpaper rotation every 600 seconds / 10 minutes
 - bar layout: `launcher, workspaces` at start and `wallpaper, mpvpaper, clock` in center
-- built-in templates: GTK 3, GTK 4, KColorScheme, Kitty, Niri and Btop
+- built-in templates: GTK 3, GTK 4, KColorScheme, Qt, Kitty, Niri and Btop
 - community templates: Pywalfox, Obsidian, VS Code, Fastfetch and Yazi
 - official `noctalia/mpvpaper` plugin and bar widget
 - mpvpaper video directory `~/Videos`
@@ -86,8 +86,9 @@ normal home-directory copies.
 ## Qt / KColorScheme
 
 `qt6ct-kde` is installed and Niri exports `QT_QPA_PLATFORMTHEME=qt6ct`.
-Noctalia's KColorScheme template generates the color scheme automatically.
-The bootstrap now seeds the Qt fonts, but one manual appearance step remains:
+Noctalia enables both its Qt and KColorScheme built-in templates so wallpaper
+palette changes generate colors for qt5ct/qt6ct as well as KDE applications.
+The bootstrap seeds the Qt fonts, but one manual appearance step remains:
 run `qt6ct`, select **`noctalia (KColorScheme)`** under **Appearance → Color scheme**,
 and apply it.
 
