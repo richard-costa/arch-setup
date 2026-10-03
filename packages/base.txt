@@ -4,6 +4,7 @@ amd-ucode
 linux-firmware
 base-devel
 git
+git-lfs
 man-db
 man-pages
 
