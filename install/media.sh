@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
 
-# Copy repository wallpaper collections into the normal user media folders.
-# Safe to run repeatedly; rsync only updates changed/new files.
+# Hydrate Git LFS media, then copy repository wallpaper collections into the
+# normal user media folders. Safe to run repeatedly.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
+# A fresh clone may contain only LFS pointer files because git-lfs is installed
+# later by packages/base.txt. Hydrate the real media before copying it out.
+if command -v git-lfs >/dev/null 2>&1; then
+  git -C "$ROOT" lfs install --local
+  git -C "$ROOT" lfs pull
+else
+  echo "warning: git-lfs is not installed; wallpaper media may still be LFS pointers." >&2
+fi
 
 mkdir -p "$HOME/Pictures/Wallpapers" "$HOME/Videos"
 
