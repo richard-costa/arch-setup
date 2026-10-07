@@ -11,9 +11,7 @@ qt6ct-kde
 onlyoffice-bin
 visual-studio-code-bin
 quarto-cli-bin
+typora
 
 # Specialized utility kept from the previous setup
 libvshadow-git
-
-# Alternative Markdown editor; not installed because Apostrophe is the default.
-# marktext-bin
