@@ -11,9 +11,11 @@ ROOT="$(cd "$(dirname "$0")" && pwd)"
 bash "$ROOT/install/base.sh"
 bash "$ROOT/install/desktop.sh"
 
-# AUR packages currently include Noctalia Greeter.
-# install/aur.sh bootstraps yay automatically when needed.
+# Install AUR packages, bootstrapping yay automatically when needed.
 bash "$ROOT/install/aur.sh"
+
+# Set desktop file associations after both repository and AUR apps are present.
+bash "$ROOT/install/default-apps.sh"
 
 # Install the Noctalia Greeter configuration and enable greetd.
 bash "$ROOT/install/greeter.sh"
