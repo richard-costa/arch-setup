@@ -115,7 +115,6 @@ spotify-launcher
 flatpak
 # KWrite is provided by the kate package.
 kate
-apostrophe
 loupe
 obsidian
 
