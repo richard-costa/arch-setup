@@ -27,7 +27,7 @@ cd arch-setup
 bash install.sh
 ```
 
-The bootstrap installs the system and desktop packages, bootstraps `yay`, installs and configures Noctalia Greeter, configures services, copies wallpaper collections, deploys dotfiles, and seeds first-run application preferences.
+The bootstrap installs the system and desktop packages, bootstraps `yay`, installs and configures Noctalia Greeter, configures services and default application associations, copies wallpaper collections, deploys dotfiles, and seeds first-run application preferences.
 
 Optional utilities, diagnostics, Btrfs Assistant and Snapper:
 
