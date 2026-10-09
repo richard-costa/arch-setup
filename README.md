@@ -2,7 +2,7 @@
 
 Personal executable setup for **vanilla Arch + linux-zen + Niri + Noctalia**.
 
-This repository is the **implementation source of truth** for the workstation. Explanations, troubleshooting, and things worth remembering live in [dev-kb](https://github.com/richard-costa/dev-kb).
+This repository is the **implementation source of truth** for the workstation. Explanations, troubleshooting, and things worth remembering live in [knowledge-base](https://github.com/richard-costa/knowledge-base).
 
 ## Before installing
 
@@ -14,7 +14,7 @@ nvme_core.default_ps_max_latency_us=5500
 
 Full Arch installation procedure, Wi-Fi steps, Archinstall choices, and NVMe persistence instructions:
 
-- [dev-kb: Arch installation](https://github.com/richard-costa/dev-kb/blob/main/linux/arch-install.md)
+- [knowledge-base: Arch installation](https://github.com/richard-costa/knowledge-base/blob/main/linux/arch-install.md)
 
 ## Bootstrap
 
@@ -79,12 +79,12 @@ Some setup remains intentionally manual:
 
 Documentation:
 
-- [Noctalia](https://github.com/richard-costa/dev-kb/blob/main/desktop/noctalia.md)
-- [Linux application notes](https://github.com/richard-costa/dev-kb/blob/main/linux/apps.md)
-- [VS Code](https://github.com/richard-costa/dev-kb/blob/main/vscode.md)
-- [Btrfs and Snapper](https://github.com/richard-costa/dev-kb/blob/main/linux/btrfs-snapper.md)
-- [Git LFS](https://github.com/richard-costa/dev-kb/blob/main/git/lfs.md)
-- [Linux diagnostics](https://github.com/richard-costa/dev-kb/blob/main/linux/diagnostics.md)
+- [Noctalia](https://github.com/richard-costa/knowledge-base/blob/main/desktop/noctalia.md)
+- [Linux application notes](https://github.com/richard-costa/knowledge-base/blob/main/linux/apps.md)
+- [VS Code](https://github.com/richard-costa/knowledge-base/blob/main/editor/vscode.md)
+- [Btrfs and Snapper](https://github.com/richard-costa/knowledge-base/blob/main/linux/btrfs-snapper.md)
+- [Git LFS](https://github.com/richard-costa/knowledge-base/blob/main/git/lfs.md)
+- [Linux diagnostics](https://github.com/richard-costa/knowledge-base/blob/main/linux/diagnostics.md)
 
 ## Repository layout
 
@@ -104,9 +104,9 @@ Generated theme files, secrets, keyrings and runtime state are not stored in Git
 
 ## Documentation boundary
 
-Keep executable configuration here. Keep explanations, procedures, troubleshooting, and long-term notes in `dev-kb`.
+Keep executable configuration here. Keep explanations, procedures, troubleshooting, and long-term notes in `knowledge-base`.
 
-A small reminder may remain here when it is necessary to operate the setup safely, but the detailed procedure should link to `dev-kb`.
+A small reminder may remain here when it is necessary to operate the setup safely, but the detailed procedure should link to `knowledge-base`.
 
 ## Symlink
 
