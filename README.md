@@ -41,6 +41,32 @@ Tailscale can then be authenticated when wanted:
 sudo tailscale up
 ```
 
+## Wallpaper media
+
+The local media folders are the freshest working copy:
+
+```text
+~/Pictures/Wallpapers/
+~/Videos/
+```
+
+Sync additions and updates into this repository with:
+
+```bash
+./scripts/sync-media.sh
+```
+
+The repository keeps the canonical collections in `wallpapers/` and
+`video-wallpapers/`. The sync script intentionally does not delete repository
+files.
+
+For Wallhaven images named `wallhaven-<id>.<ext>`, the original URL is derived
+automatically as `https://wallhaven.cc/w/<id>`.
+
+For media from other sources, keep the original URL in `media-sources.toml`.
+The personal website reads this file when preparing its optimized homepage
+copies.
+
 ## Manual follow-up
 
 Some setup remains intentionally manual:
@@ -63,12 +89,15 @@ Documentation:
 ## Repository layout
 
 ```text
-packages/   package lists
-defaults/   first-install application preference seeds
-install/    bootstrap scripts
-dotfiles/   tracked user configuration
-system/     files installed under /etc
-scripts/    migration/debugging helpers
+packages/             package lists
+defaults/             first-install application preference seeds
+install/              bootstrap scripts
+dotfiles/             tracked user configuration
+system/               files installed under /etc
+scripts/              migration/debugging helpers
+wallpapers/           static wallpaper collection
+video-wallpapers/     animated wallpaper collection
+media-sources.toml    original URLs for non-Wallhaven media
 ```
 
 Generated theme files, secrets, keyrings and runtime state are not stored in Git.

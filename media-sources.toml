@@ -1,0 +1,12 @@
+# Original/source URLs for wallpaper files that cannot be derived from a
+# Wallhaven-style filename. Files named wallhaven-<id>.<ext> are resolved as
+# https://wallhaven.cc/w/<id> automatically.
+
+[sources]
+"Leonardo_da_vinci,_Head_of_a_girl_01.jpg" = "https://upload.wikimedia.org/wikipedia/commons/b/b5/Leonardo_da_vinci%2C_Head_of_a_girl_01.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+"rare-gallery-girl-in-a-tunnel.jpg" = "https://rare-gallery.com/5522099-anime-girls-with-blonde-hair-and-green-eyes-in-a-tunnel.html"
+"reddit-girl-with-lear-earring.png" = "https://www.reddit.com/r/wallpaper/comments/sesrxu/1920x1080_vermeers_girl_with_a_pearl_earring_true/#lightbox"
+"cyberpunk-2077-lucy-h-live-wallpaper-rare-gallery.mp4" = "https://rare-gallery.com/142295-cyberpunk-2077-lucy-h-live-wallpaper.html"
+"luminous-night-clouds-wallpaper-wallsflow.mp4" = "https://wallsflow.com/live-wallpapers/minimalist/997-luminous-night-clouds-wallpaper.html"
+"peaceful-meadow-moewalls-com.mp4" = "https://moewalls.com/lifestyle/peaceful-meadow-live-wallpaper/"
+"tokyo-alley-moewalls.mp4" = "https://rare-gallery.com/142295-cyberpunk-2077-lucy-h-live-wallpaper.html"
