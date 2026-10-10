@@ -1,0 +1,5 @@
+# VS Code extensions installed by install/vscode.sh
+JasonHeld.jsonl-pretty-editor
+cweijan.vscode-office
+mathematic.vscode-pdf
+Bowlerr.sqlite-intelliview-vscode
