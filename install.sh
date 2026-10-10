@@ -14,6 +14,9 @@ bash "$ROOT/install/desktop.sh"
 # Install AUR packages, bootstrapping yay automatically when needed.
 bash "$ROOT/install/aur.sh"
 
+# Install curated VS Code extensions now that visual-studio-code-bin is present.
+bash "$ROOT/install/vscode.sh"
+
 # Set desktop file associations after both repository and AUR apps are present.
 bash "$ROOT/install/default-apps.sh"
 
