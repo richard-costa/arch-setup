@@ -29,6 +29,8 @@ bash install.sh
 
 The bootstrap installs the system and desktop packages, bootstraps `yay`, installs and configures Noctalia Greeter, configures services and default application associations, copies wallpaper collections, deploys dotfiles, and seeds first-run application preferences.
 
+Memory setup keeps `zram-generator` defaults and adds an 8 GiB Btrfs swapfile at `/swap/swapfile` with priority 10, below ZRAM. The swapfile lives in its own Btrfs subvolume so root snapshots do not include it. `install/swap.sh` refuses non-Btrfs roots or non-`single` Btrfs data profiles rather than changing filesystem layout automatically.
+
 Optional utilities, diagnostics, Btrfs Assistant and Snapper:
 
 ```bash
