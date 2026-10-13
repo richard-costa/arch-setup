@@ -23,8 +23,12 @@ bash "$ROOT/install/default-apps.sh"
 # Install the Noctalia Greeter configuration and enable greetd.
 bash "$ROOT/install/greeter.sh"
 
-# Install small /etc configuration owned by this repo (currently ZRAM).
+# Install small /etc configuration owned by this repo.
 bash "$ROOT/install/system.sh"
+
+# Keep fast ZRAM as the preferred swap and add lower-priority Btrfs-backed
+# overflow so transient memory spikes do not immediately trigger the OOM killer.
+bash "$ROOT/install/swap.sh"
 
 # Enable networking, Bluetooth, TRIM, firewall/timers when installed, and NTP.
 bash "$ROOT/install/services.sh"
