@@ -100,6 +100,7 @@ qt5-wayland
 
 # Documents / PDF and ebook tools
 okular
+# Used to rotate a single page within a PDF.
 pdfarranger
 poppler
 qpdf
