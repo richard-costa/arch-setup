@@ -100,6 +100,7 @@ qt5-wayland
 
 # Documents / PDF and ebook tools
 okular
+pdfarranger
 poppler
 qpdf
 img2pdf
