@@ -87,6 +87,9 @@ yazi
 tree
 
 # Development / databases
+# Architecture and ER diagrams
+drawio-desktop
+
 # Source code line counting / language metrics
 tokei
 cloc
