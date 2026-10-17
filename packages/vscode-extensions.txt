@@ -3,3 +3,4 @@ JasonHeld.jsonl-pretty-editor
 cweijan.vscode-office
 mathematic.vscode-pdf
 Bowlerr.sqlite-intelliview-vscode
+ms-azuretools.vscode-containers
