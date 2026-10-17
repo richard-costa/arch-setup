@@ -87,6 +87,10 @@ yazi
 tree
 
 # Development / databases
+# Source code line counting / language metrics
+tokei
+cloc
+
 # DBeaver needs a Java runtime; declaring one avoids an interactive provider
 # choice during the bootstrap.
 jre-openjdk
@@ -108,7 +112,6 @@ img2pdf
 imagemagick
 ebook-tools
 kdegraphics-mobipocket
-xournalpp
 
 # Creative / study / productivity applications
 krita
