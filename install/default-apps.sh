@@ -49,4 +49,19 @@ else
     echo "warning: Typora desktop entry not found; skipping Markdown defaults." >&2
 fi
 
+# Use Nautilus's Exec command instead of D-Bus activation, so launching Files
+# from Noctalia opens a fresh window on the current workspace.
+nautilus_desktop="/usr/share/applications/org.gnome.Nautilus.desktop"
+if [[ -f "$nautilus_desktop" ]]; then
+    applications_dir="${XDG_DATA_HOME:-$HOME/.local/share}/applications"
+    nautilus_desktop_override="$applications_dir/org.gnome.Nautilus.desktop"
+    mkdir -p "$applications_dir"
+    if [[ ! -e "$nautilus_desktop_override" ]]; then
+        cp "$nautilus_desktop" "$nautilus_desktop_override"
+    fi
+    sed -i 's/^DBusActivatable=true$/DBusActivatable=false/' "$nautilus_desktop_override"
+else
+    echo "warning: Nautilus desktop entry not found; skipping launcher override." >&2
+fi
+
 echo "Default application associations configured."
