@@ -31,6 +31,8 @@ The bootstrap installs the system and desktop packages, bootstraps `yay`, instal
 
 Memory setup keeps `zram-generator` defaults and adds an 8 GiB Btrfs swapfile at `/swap/swapfile` with priority 10, below ZRAM. The swapfile lives in its own Btrfs subvolume so root snapshots do not include it. `install/swap.sh` refuses non-Btrfs roots or non-`single` Btrfs data profiles rather than changing filesystem layout automatically.
 
+The bootstrap also installs `system/systemd/logind.conf.d/90-clamshell.conf`, keeping the laptop awake when its lid closes on external power or while docked (useful with a KVM switch). Lid behavior on battery remains unchanged.
+
 Optional utilities, diagnostics, Btrfs Assistant and Snapper:
 
 ```bash
