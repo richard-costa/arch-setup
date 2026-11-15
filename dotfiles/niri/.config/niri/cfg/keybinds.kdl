@@ -13,7 +13,7 @@ binds {
 
     // Russian keyboard cheat sheet (independent of Alt+Shift layout switching).
     Alt+R repeat=false hotkey-overlay-title="Russian Keyboard Reference" {
-        spawn-sh "exec imv -i ru-keys -W 680 -H 230 \"$HOME/Pictures/russian-keys.jpeg\"";
+        spawn-sh "exec imv -i ru-keys -W 680 -H 230 \"$HOME/Pictures/russian-keys.jpg\"";
     }
 
     // Noctalia shell
