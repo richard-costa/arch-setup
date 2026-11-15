@@ -41,6 +41,8 @@ steam
 # Media / thumbnails / codecs
 noise-suppression-for-voice
 ffmpegthumbnailer
+# Lightweight image viewer for the Russian keyboard shortcut.
+imv
 gst-plugin-pipewire
 gst-libav
 gst-plugins-base
