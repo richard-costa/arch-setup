@@ -19,6 +19,16 @@ window-rule {
     default-window-height { fixed 920; }
 }
 
+// Russian keyboard cheat sheet: show above the active workspace without stealing focus.
+window-rule {
+    match app-id="^ru-keys$"
+    open-floating true
+    open-focused false
+    default-column-width { fixed 680; }
+    default-window-height { fixed 230; }
+    default-floating-position x=16 y=16 relative-to="bottom-right"
+}
+
 window-rule {
     match app-id="steam"
     exclude title=r#"^[Ss]team$"#
