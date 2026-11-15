@@ -11,6 +11,11 @@ binds {
         spawn-sh "nautilus --new-window \"$HOME/Documents\"";
     }
 
+    // Russian keyboard cheat sheet (independent of Alt+Shift layout switching).
+    Alt+R repeat=false hotkey-overlay-title="Russian Keyboard Reference" {
+        spawn-sh "exec imv -i ru-keys -W 680 -H 230 \"$HOME/Pictures/russian-keys.jpeg\"";
+    }
+
     // Noctalia shell
     Mod+Shift+Return hotkey-overlay-title="Wallpaper Selector" {
         spawn-sh "noctalia msg panel-toggle wallpaper";
