@@ -104,6 +104,7 @@ jre-openjdk
 dbeaver
 docker
 docker-compose
+docker-buildx
 sqlite
 sqlitebrowser
 # SQLite Browser is Qt5; this provides its native Wayland platform plugin.
