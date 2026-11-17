@@ -95,6 +95,8 @@ drawio-desktop
 # Source code line counting / language metrics
 tokei
 cloc
+# Python project/environment manager (outside project virtual environments).
+uv
 
 # DBeaver needs a Java runtime; declaring one avoids an interactive provider
 # choice during the bootstrap.
