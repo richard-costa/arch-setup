@@ -24,6 +24,11 @@ set -gx VISUAL micro
 # Common user executable locations.
 fish_add_path ~/.local/bin ~/.cargo/bin
 
+# Smart directory jumping for interactive shells.
+if status is-interactive; and type -q zoxide
+    zoxide init fish | source
+end
+
 # Show timestamps when explicitly viewing Fish command history.
 function history
     builtin history --show-time='%F %T ' $argv
