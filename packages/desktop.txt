@@ -74,6 +74,7 @@ fish-pure-prompt
 fish-autopair
 fd
 fzf
+zoxide
 eza
 bat
 micro
