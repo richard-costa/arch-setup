@@ -1,10 +1,10 @@
 # arch-setup
 
-Executable workstation setup for **vanilla Arch + linux-zen + Niri + Noctalia**. Configuration lives here; explanations and troubleshooting belong in [knowledge-base](https://github.com/richard-costa/knowledge-base).
+Executable workstation setup for **vanilla Arch + linux-zen + Niri + Noctalia**. Configuration lives here; explanations and troubleshooting belong in [llm-wiki](https://github.com/richard-costa/llm-wiki).
 
 ## Before installing
 
-This laptop requires `nvme_core.default_ps_max_latency_us=5500`. See [Arch installation](https://github.com/richard-costa/knowledge-base/blob/main/linux/arch-install.md) for Wi-Fi, Archinstall and persistent NVMe configuration.
+This laptop requires `nvme_core.default_ps_max_latency_us=5500`. See [Arch installation](https://github.com/richard-costa/llm-wiki/blob/main/topics/linux/arch-install.md) for Wi-Fi, Archinstall and persistent NVMe configuration.
 
 ## Bootstrap
 
@@ -17,7 +17,7 @@ bash install.sh
 
 Installs packages, yay, Noctalia Greeter, services, default app associations, wallpapers, dotfiles and first-run preferences.
 
-- Swap: default ZRAM plus an 8 GiB Btrfs swapfile at `/swap/swapfile`, priority 10. Its subvolume excludes it from root snapshots. `install/swap.sh` refuses non-Btrfs roots or non-`single` data profiles.
+- Swap: default ZRAM plus an 8 GiB Btrfs swapfile at `/swap/swapfile`, priority 10 (below ZRAM). Its subvolume excludes it from root snapshots. `install/swap.sh` refuses non-Btrfs roots or non-`single` data profiles.
 - Lid: `system/systemd/logind.conf.d/90-clamshell.conf` keeps the laptop awake on external power or when docked; battery behavior is unchanged.
 
 Optional utilities, diagnostics, Btrfs Assistant and Snapper:
@@ -43,7 +43,7 @@ Sync never deletes repository files. Wallhaven filenames `wallhaven-<id>.<ext>` 
 - Install browser extensions (Pywalfox/PWAsForFirefox) and remembered VS Code extensions.
 - Manage snapshots with Btrfs Assistant; enter secrets manually.
 
-Reference: [Noctalia](https://github.com/richard-costa/knowledge-base/blob/main/desktop/noctalia.md), [apps](https://github.com/richard-costa/knowledge-base/blob/main/linux/apps.md), [VS Code](https://github.com/richard-costa/knowledge-base/blob/main/editor/vscode.md), [Btrfs/Snapper](https://github.com/richard-costa/knowledge-base/blob/main/linux/btrfs-snapper.md), [Git LFS](https://github.com/richard-costa/knowledge-base/blob/main/git/lfs.md), [diagnostics](https://github.com/richard-costa/knowledge-base/blob/main/linux/diagnostics.md).
+Reference: [Noctalia](https://github.com/richard-costa/llm-wiki/blob/main/topics/desktop/noctalia.md), [apps](https://github.com/richard-costa/llm-wiki/blob/main/topics/linux/apps.md), [VS Code](https://github.com/richard-costa/llm-wiki/blob/main/topics/editor/vscode.md), [Btrfs/Snapper](https://github.com/richard-costa/llm-wiki/blob/main/topics/linux/btrfs-snapper.md), [Git LFS](https://github.com/richard-costa/llm-wiki/blob/main/topics/git/lfs.md), [diagnostics](https://github.com/richard-costa/llm-wiki/blob/main/topics/linux/diagnostics.md).
 
 ## Repository layout
 
