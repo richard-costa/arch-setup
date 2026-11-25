@@ -1,24 +1,12 @@
 # arch-setup
 
-Personal executable setup for **vanilla Arch + linux-zen + Niri + Noctalia**.
-
-This repository is the **implementation source of truth** for the workstation. Explanations, troubleshooting, and things worth remembering live in [knowledge-base](https://github.com/richard-costa/knowledge-base).
+Executable workstation setup for **vanilla Arch + linux-zen + Niri + Noctalia**. Configuration lives here; explanations and troubleshooting belong in [knowledge-base](https://github.com/richard-costa/knowledge-base).
 
 ## Before installing
 
-This laptop requires:
-
-```text
-nvme_core.default_ps_max_latency_us=5500
-```
-
-Full Arch installation procedure, Wi-Fi steps, Archinstall choices, and NVMe persistence instructions:
-
-- [knowledge-base: Arch installation](https://github.com/richard-costa/knowledge-base/blob/main/linux/arch-install.md)
+This laptop requires `nvme_core.default_ps_max_latency_us=5500`. See [Arch installation](https://github.com/richard-costa/knowledge-base/blob/main/linux/arch-install.md) for Wi-Fi, Archinstall and persistent NVMe configuration.
 
 ## Bootstrap
-
-Minimal Arch may not include Git:
 
 ```bash
 sudo pacman -Syu git
@@ -27,97 +15,51 @@ cd arch-setup
 bash install.sh
 ```
 
-The bootstrap installs the system and desktop packages, bootstraps `yay`, installs and configures Noctalia Greeter, configures services and default application associations, copies wallpaper collections, deploys dotfiles, and seeds first-run application preferences.
+Installs packages, yay, Noctalia Greeter, services, default app associations, wallpapers, dotfiles and first-run preferences.
 
-Memory setup keeps `zram-generator` defaults and adds an 8 GiB Btrfs swapfile at `/swap/swapfile` with priority 10, below ZRAM. The swapfile lives in its own Btrfs subvolume so root snapshots do not include it. `install/swap.sh` refuses non-Btrfs roots or non-`single` Btrfs data profiles rather than changing filesystem layout automatically.
-
-The bootstrap also installs `system/systemd/logind.conf.d/90-clamshell.conf`, keeping the laptop awake when its lid closes on external power or while docked (useful with a KVM switch). Lid behavior on battery remains unchanged.
+- Swap: default ZRAM plus an 8 GiB Btrfs swapfile at `/swap/swapfile`, priority 10. Its subvolume excludes it from root snapshots. `install/swap.sh` refuses non-Btrfs roots or non-`single` data profiles.
+- Lid: `system/systemd/logind.conf.d/90-clamshell.conf` keeps the laptop awake on external power or when docked; battery behavior is unchanged.
 
 Optional utilities, diagnostics, Btrfs Assistant and Snapper:
 
 ```bash
 bash install/extras.sh
-```
-
-Tailscale can then be authenticated when wanted:
-
-```bash
-sudo tailscale up
+sudo tailscale up  # optional authentication
 ```
 
 ## Wallpaper media
 
-The local media folders are the freshest working copy:
-
-```text
-~/Pictures/Wallpapers/
-~/Videos/
-```
-
-Sync additions and updates into this repository with:
+Sync `~/Pictures/Wallpapers/` and `~/Videos/` to `wallpapers/` and `video-wallpapers/`:
 
 ```bash
 ./scripts/sync-media.sh
 ```
 
-The repository keeps the canonical collections in `wallpapers/` and
-`video-wallpapers/`. The sync script intentionally does not delete repository
-files.
-
-For Wallhaven images named `wallhaven-<id>.<ext>`, the original URL is derived
-automatically as `https://wallhaven.cc/w/<id>`.
-
-For media from other sources, keep the original URL in `media-sources.toml`.
-The personal website reads this file when preparing its optimized homepage
-copies.
+Sync never deletes repository files. Wallhaven filenames `wallhaven-<id>.<ext>` imply `https://wallhaven.cc/w/<id>`; record other source URLs in `media-sources.toml` for website media preparation.
 
 ## Manual follow-up
 
-Some setup remains intentionally manual:
+- Select **noctalia (KColorScheme)** in `qt6ct`.
+- Install browser extensions (Pywalfox/PWAsForFirefox) and remembered VS Code extensions.
+- Manage snapshots with Btrfs Assistant; enter secrets manually.
 
-- run `qt6ct` and select **noctalia (KColorScheme)**
-- install browser extensions such as Pywalfox / PWAsForFirefox
-- install/configure the remembered VS Code extensions
-- create/manage snapshots with Btrfs Assistant when wanted
-- enter secrets manually
-
-Documentation:
-
-- [Noctalia](https://github.com/richard-costa/knowledge-base/blob/main/desktop/noctalia.md)
-- [Linux application notes](https://github.com/richard-costa/knowledge-base/blob/main/linux/apps.md)
-- [VS Code](https://github.com/richard-costa/knowledge-base/blob/main/editor/vscode.md)
-- [Btrfs and Snapper](https://github.com/richard-costa/knowledge-base/blob/main/linux/btrfs-snapper.md)
-- [Git LFS](https://github.com/richard-costa/knowledge-base/blob/main/git/lfs.md)
-- [Linux diagnostics](https://github.com/richard-costa/knowledge-base/blob/main/linux/diagnostics.md)
+Reference: [Noctalia](https://github.com/richard-costa/knowledge-base/blob/main/desktop/noctalia.md), [apps](https://github.com/richard-costa/knowledge-base/blob/main/linux/apps.md), [VS Code](https://github.com/richard-costa/knowledge-base/blob/main/editor/vscode.md), [Btrfs/Snapper](https://github.com/richard-costa/knowledge-base/blob/main/linux/btrfs-snapper.md), [Git LFS](https://github.com/richard-costa/knowledge-base/blob/main/git/lfs.md), [diagnostics](https://github.com/richard-costa/knowledge-base/blob/main/linux/diagnostics.md).
 
 ## Repository layout
 
-```text
-packages/             package lists
-defaults/             first-install application preference seeds
-install/              bootstrap scripts
-dotfiles/             tracked user configuration
-system/               files installed under /etc
-scripts/              migration/debugging helpers
-wallpapers/           static wallpaper collection
-video-wallpapers/     animated wallpaper collection
-media-sources.toml    original URLs for non-Wallhaven media
-```
+| Path | Purpose |
+|---|---|
+| `packages/` | Package lists |
+| `defaults/` | First-run preference seeds |
+| `install/` | Bootstrap scripts |
+| `dotfiles/` | User configuration |
+| `system/` | Files installed under /etc |
+| `scripts/` | Migration/debugging helpers |
+| `wallpapers/`, `video-wallpapers/` | Media collections |
+| `media-sources.toml` | Non-Wallhaven source URLs |
 
-Generated theme files, secrets, keyrings and runtime state are not stored in Git.
-
-## Documentation boundary
-
-Keep executable configuration here. Keep explanations, procedures, troubleshooting, and long-term notes in `knowledge-base`.
-
-A small reminder may remain here when it is necessary to operate the setup safely, but the detailed procedure should link to `knowledge-base`.
+Do not commit generated themes, secrets, keyrings or runtime state.
 
 ## Symlink
 
-Add:
-
-```text
-~/arch-setup ~/Documents/projects/arch-setup
-```
-
-or another path where Git repositories are normally kept.
+Link `~/arch-setup` to `~/Documents/projects/arch-setup` (or the actual checkout).
