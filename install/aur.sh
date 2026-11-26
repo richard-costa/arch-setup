@@ -5,7 +5,7 @@
 # On a fresh Arch install this script bootstraps yay from the AUR first.
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+source "$(dirname "$0")/_lib.sh"
 
 if ! command -v yay >/dev/null 2>&1; then
   echo "yay not found; building it from the AUR..."
@@ -20,9 +20,6 @@ if ! command -v yay >/dev/null 2>&1; then
   )
 fi
 
-mapfile -t packages < <(
-  sed -E 's/[[:space:]]+#.*$//' "$ROOT/packages/aur.txt" |
-    grep -Ev '^[[:space:]]*(#|$)'
-)
+mapfile -t packages < <(read_manifest "$ROOT/packages/aur.txt")
 
 (("${#packages[@]}" == 0)) || yay -S --needed -- "${packages[@]}"
