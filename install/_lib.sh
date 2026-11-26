@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Shared helpers used by the pacman install scripts.
+# Shared helpers for package and extension manifests.
 #
 # "set -euo pipefail" makes scripts stop on errors, undefined variables,
 # or failed commands inside pipelines instead of continuing silently.
@@ -8,6 +8,11 @@ set -euo pipefail
 
 # Repository root, regardless of which directory the script is launched from.
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
+read_manifest() {
+  sed -E 's/[[:space:]]+#.*$//' "$1" |
+    grep -Ev '^[[:space:]]*(#|$)'
+}
 
 install_manifest() {
   local manifest="$1"
@@ -19,10 +24,7 @@ install_manifest() {
 
   # Package manifests are plain text. Ignore blank lines and comments so the
   # files remain readable and can be grouped into documented sections.
-  mapfile -t packages < <(
-    sed -E 's/[[:space:]]+#.*$//' "$manifest" |
-      grep -Ev '^[[:space:]]*(#|$)'
-  )
+  mapfile -t packages < <(read_manifest "$manifest")
 
   # Some Arch dependencies are virtual packages with multiple providers.
   # Callers may name the provider we prefer. If that package exists in the

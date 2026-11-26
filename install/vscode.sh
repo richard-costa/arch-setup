@@ -3,7 +3,7 @@
 # Install the curated VS Code extensions for this workstation.
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+source "$(dirname "$0")/_lib.sh"
 manifest="$ROOT/packages/vscode-extensions.txt"
 
 if ! command -v code >/dev/null 2>&1; then
@@ -11,10 +11,7 @@ if ! command -v code >/dev/null 2>&1; then
   exit 1
 fi
 
-mapfile -t extensions < <(
-  sed -E 's/[[:space:]]+#.*$//' "$manifest" |
-    grep -Ev '^[[:space:]]*(#|$)'
-)
+mapfile -t extensions < <(read_manifest "$manifest")
 
 for extension in "${extensions[@]}"; do
   code --install-extension "$extension"

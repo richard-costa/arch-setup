@@ -4,7 +4,7 @@ Executable workstation setup for **vanilla Arch + linux-zen + Niri + Noctalia**.
 
 ## Before installing
 
-This laptop requires `nvme_core.default_ps_max_latency_us=5500`. See [Arch installation](https://github.com/richard-costa/llm-wiki/blob/main/topics/linux/arch-install.md) for Wi-Fi, Archinstall and persistent NVMe configuration.
+This laptop requires `nvme_core.default_ps_max_latency_us=5500`. See [Arch installation](https://github.com/richard-costa/llm-wiki/blob/main/topics/linux/arch-install.md) for Wi-Fi, Archinstall and persistent NVMe configuration. Enable `[multilib]` for Steam and the 32-bit graphics packages.
 
 ## Bootstrap
 
@@ -15,7 +15,7 @@ cd arch-setup
 bash install.sh
 ```
 
-Installs packages, yay, Noctalia Greeter, services, default app associations, wallpapers, dotfiles and first-run preferences.
+Installs packages, yay, Noctalia Greeter, services, default app associations, wallpapers, dotfiles, first-run preferences, and the [curated VS Code extensions](packages/vscode-extensions.txt).
 
 - Swap: default ZRAM plus an 8 GiB Btrfs swapfile at `/swap/swapfile`, priority 10 (below ZRAM). Its subvolume excludes it from root snapshots. `install/swap.sh` refuses non-Btrfs roots or non-`single` data profiles.
 - Lid: `system/systemd/logind.conf.d/90-clamshell.conf` keeps the laptop awake on external power or when docked; battery behavior is unchanged.
@@ -26,6 +26,16 @@ Optional utilities, diagnostics, Btrfs Assistant and Snapper:
 bash install/extras.sh
 sudo tailscale up  # optional authentication
 ```
+
+## Dotfiles and first-run preferences
+
+[GNU Stow deployment](install/dotfiles.sh) links Niri, Fish, Kitty, Noctalia, Yazi, and PipeWire configuration and applies GTK appearance through `gsettings`. First-run preferences are copied only when the destination is absent.
+
+| Seed in `defaults/` | Default destination |
+|---|---|
+| `noctalia-settings.toml` | `~/.local/state/noctalia/settings.toml` |
+| `qt6ct.conf` | `~/.config/qt6ct/qt6ct.conf` |
+| `fastfetch-config.jsonc` | `~/.config/fastfetch/config.jsonc` |
 
 ## Wallpaper media
 
@@ -40,7 +50,7 @@ Sync never deletes repository files. Wallhaven filenames `wallhaven-<id>.<ext>` 
 ## Manual follow-up
 
 - Select **noctalia (KColorScheme)** in `qt6ct`.
-- Install browser extensions (Pywalfox/PWAsForFirefox) and remembered VS Code extensions.
+- Install browser extensions (Pywalfox/PWAsForFirefox) and configure VS Code extensions as needed.
 - Manage snapshots with Btrfs Assistant; enter secrets manually.
 
 Reference: [Noctalia](https://github.com/richard-costa/llm-wiki/blob/main/topics/desktop/noctalia.md), [apps](https://github.com/richard-costa/llm-wiki/blob/main/topics/linux/apps.md), [VS Code](https://github.com/richard-costa/llm-wiki/blob/main/topics/editor/vscode.md), [Btrfs/Snapper](https://github.com/richard-costa/llm-wiki/blob/main/topics/linux/btrfs-snapper.md), [Git LFS](https://github.com/richard-costa/llm-wiki/blob/main/topics/git/lfs.md), [diagnostics](https://github.com/richard-costa/llm-wiki/blob/main/topics/linux/diagnostics.md).
